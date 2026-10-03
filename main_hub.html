@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끼리끼리 (KKIRI-KKIRI) • 우리끼리 통하는 찐 한국어</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            seoul: {
+              base: '#0c0f17',
+              card: '#161b26',
+              border: '#273142',
+              pink: '#ff2e7e',
+              purple: '#9d4edd',
+              cyan: '#00f5d4',
+              yellow: '#fee440',
+              lime: '#70e000'
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow 3s infinite alternate',
+            'float': 'float 4s ease-in-out infinite'
+          },
+          keyframes: {
+            glow: {
+              '0%': { filter: 'drop-shadow(0 0 15px rgba(255, 46, 126, 0.35))' },
+              '100%': { filter: 'drop-shadow(0 0 25px rgba(0, 245, 212, 0.4))' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Web Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body {
+      font-family: "Pretendard", system-ui, sans-serif;
+      background-color: #0c0f17;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 46, 126, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(157, 78, 221, 0.18) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(0, 245, 212, 0.06) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .glass-card {
+      background: rgba(22, 27, 38, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(255, 46, 126, 0.4);
+      box-shadow: 0 16px 36px -10px rgba(255, 46, 126, 0.22);
+    }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col justify-between selection:bg-seoul-pink selection:text-white">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="w-full px-5 sm:px-10 py-4 border-b border-seoul-border/60 bg-seoul-base/80 backdrop-blur-xl sticky top-0 z-40 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-seoul-pink via-seoul-purple to-seoul-cyan flex items-center justify-center text-xl font-black text-white shadow-lg shadow-seoul-pink/25">
+        ⚡
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xl font-black tracking-tighter text-white">끼리끼리</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-seoul-pink/20 text-seoul-pink border border-seoul-pink/30">
+            Kkiri-Kkiri
+          </span>
+        </div>
+        <p class="text-[11px] text-slate-400 font-medium">우리끼리 통하는 찐 한국어 아지트</p>
+      </div>
+    </div>
+
+    <!-- Live Seoul Time Widget -->
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-2 bg-seoul-card/80 px-3.5 py-1.5 rounded-2xl border border-seoul-border text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-slate-400 font-medium">서울 (KST):</span>
+        <span id="seoulClock" class="font-mono font-black text-seoul-cyan">--:--:--</span>
+      </div>
+
+      <!-- Quick Sound Toggle -->
+      <button onclick="speakKorean('끼리끼리! 어서 와!')" class="p-2.5 rounded-2xl bg-seoul-card hover:bg-slate-800 text-slate-300 hover:text-white border border-seoul-border transition" title="Saludo casual">
+        <i data-lucide="volume-2" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-10">
+
+    <!-- Hero Title & Badges -->
+    <section class="text-center space-y-4 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-seoul-pink/15 via-seoul-purple/15 to-seoul-cyan/15 border border-seoul-pink/30 text-xs font-bold text-slate-200">
+        <span class="text-seoul-pink">✨</span> 100% Banmal • Sin acartonamiento • Vida Real
+      </div>
+
+      <h1 class="text-4xl sm:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-seoul-pink via-purple-300 to-seoul-cyan animate-glow-pulse">
+        끼리끼리
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
+        El espacio autónomo para aprender coreano entre amigos. Elige una experiencia interactiva para soltar la lengua, escuchar audios reales y practicar sin filtros de libro de texto.
+      </p>
+
+      <!-- Pill Highlights -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs font-bold text-slate-300">
+        <span class="px-3 py-1 rounded-xl bg-seoul-card border border-seoul-border flex items-center gap-1.5">
+          <i data-lucide="mic" class="w-3.5 h-3.5 text-seoul-pink"></i> Karaoke & Banmal
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-seoul-card border border-seoul-border flex items-center gap-1.5">
+          <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-400"></i> K-Romance & Chisme
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-seoul-card border border-seoul-border flex items-center gap-1.5">
+          <i data-lucide="clapperboard" class="w-3.5 h-3.5 text-seoul-yellow"></i> Tribunal K-Drama
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-seoul-card border border-seoul-border flex items-center gap-1.5">
+          <i data-lucide="message-square" class="w-3.5 h-3.5 text-seoul-cyan"></i> 15 Muletillas
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-seoul-card border border-seoul-border flex items-center gap-1.5">
+          <i data-lucide="coffee" class="w-3.5 h-3.5 text-amber-400"></i> K-Café & Sseol
+        </span>
+      </div>
+    </section>
+
+    <!-- ================= 5 CLASS MODULES GRID ================= -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- CARD 1: BANMAL & KARAOKE -->
+      <a href="clase1_banmal_karaoke.html" class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-seoul-pink/10 rounded-full blur-2xl group-hover:bg-seoul-pink/20 transition"></div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🎤</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-seoul-pink/15 text-seoul-pink border border-seoul-pink/30">
+              Clase 01 • Neon Arcade
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white group-hover:text-seoul-pink transition flex items-center gap-1.5">
+              오늘부터 말 놓자!
+            </h2>
+            <p class="text-xs text-seoul-cyan font-bold pt-0.5">El Pacto de Banmal & Karaoke</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Bautízate con un nombre coreano nativo (cálculo automático de Batchim) y aprende las 6 frases indispensables para dominar el Noraebang con YouTube.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-seoul-border flex items-center justify-between text-xs font-bold text-seoul-pink">
+          <span>Explorar Módulo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+        </div>
+      </a>
+
+      <!-- CARD 2: AMOR & CHISME (LOVE, MAYBE) -->
+      <a href="clase2_amor_chisme.html" class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-rose-400/10 rounded-full blur-2xl group-hover:bg-rose-400/20 transition"></div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">💌</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-rose-400/15 text-rose-300 border border-rose-400/30">
+              Clase 02 • K-Romance Pastel
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white group-hover:text-rose-300 transition flex items-center gap-1.5">
+              사랑인가 봐
+            </h2>
+            <p class="text-xs text-rose-400 font-bold pt-0.5">Amor, Amistad & Chisme</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Letra interactiva desglosada por color (modismos, contracciones, terminación ~잖아), dilemas cotidianos y el semáforo del coqueteo (썸).
+          </p>
+        </div>
+        <div class="pt-3 border-t border-seoul-border flex items-center justify-between text-xs font-bold text-rose-300">
+          <span>Explorar Módulo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+        </div>
+      </a>
+
+      <!-- CARD 3: RED FLAGS VS GREEN FLAGS -->
+      <a href="clase3_red_flag_green_flag.html" class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition"></div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🎬</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-red-500/15 text-red-400 border border-red-500/30">
+              Clase 03 • Cinema Noir
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white group-hover:text-red-400 transition flex items-center gap-1.5">
+              똥차 가고 벤츠 온다
+            </h2>
+            <p class="text-xs text-emerald-400 font-bold pt-0.5">Red Flags vs. Green Flags</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Tribunal interactivo de clichés de K-Dramas (손목 잡기, 재벌), notas de voz de amigos nativos, soundboard de reacciones y generador de red flag personal.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-seoul-border flex items-center justify-between text-xs font-bold text-red-400">
+          <span>Explorar Módulo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+        </div>
+      </a>
+
+      <!-- CARD 4: MULETILLAS & RITMO NATIVO -->
+      <a href="clase4_sonar_natural.html" class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-seoul-purple/15 rounded-full blur-2xl group-hover:bg-seoul-purple/25 transition"></div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🗣️</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-seoul-purple/20 text-purple-300 border border-seoul-purple/30">
+              Clase 04 • Urban Y2K
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white group-hover:text-purple-300 transition flex items-center gap-1.5">
+              교과서 버려!
+            </h2>
+            <p class="text-xs text-seoul-cyan font-bold pt-0.5">Cómo sonar como coreano real</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Detector de robots vs. humanos, matriz interactiva con 15 muletillas clicables con audio (그니까, 인정, 솔직히), tuneador de frases y reto de 3 segundos.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-seoul-border flex items-center justify-between text-xs font-bold text-purple-300">
+          <span>Explorar Módulo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+        </div>
+      </a>
+
+      <!-- CARD 5: K-CAFE & CHISME (SSEOL) -->
+      <a href="clase5_cafe_y_chisme.html" class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/15 rounded-full blur-2xl group-hover:bg-amber-500/25 transition"></div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">☕</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              Clase 05 • Cozy Espresso
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white group-hover:text-amber-300 transition flex items-center gap-1.5">
+              카페에서 수다 떨기
+            </h2>
+            <p class="text-xs text-amber-400 font-bold pt-0.5">K-Cafe, Menú & El Arte del Chisme</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Duelo 얼죽아 vs. 뜨아, decodificador de abreviaciones (아아, 아바라, 자허블, 크로플), menú real de Seúl y carrusel con 5 situaciones de roleplay.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-seoul-border flex items-center justify-between text-xs font-bold text-amber-300">
+          <span>Explorar Módulo</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+        </div>
+      </a>
+
+      <!-- CARD EXTRA: COMUNIDAD DISCORD -->
+      <div class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5 border-dashed border-seoul-border relative overflow-hidden">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">👾</span>
+            <span class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+              Comunidad • 끼리끼리
+            </span>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white flex items-center gap-1.5">
+              Discord Oficial
+            </h2>
+            <p class="text-xs text-indigo-400 font-bold pt-0.5">#banmal-only • #k-drama-chisme</p>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Canales de voz para karaoke, notas de voz de amigos nativos y espacio libre para practicar preguntas sin pena.
+          </p>
+        </div>
+        <div class="p-3 bg-seoul-card/90 rounded-2xl border border-seoul-border text-[11px] text-slate-300 space-y-1">
+          <p class="font-bold text-white flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Regla #1: Cero vergüenza (부끄러워하지 마)
+          </p>
+          <p class="text-slate-400">Aquí todos nos equivocamos con una sonrisa.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full px-6 py-6 border-t border-seoul-border/60 bg-seoul-base/90 text-center text-xs text-slate-500">
+    <p>끼리끼리 (KKIRI-KKIRI) • Plataforma Interactiva de Conversación Coreana • 100% Autónoma</p>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    // Reloj en tiempo real de Seúl (KST, UTC+9)
+    function updateSeoulTime() {
+      const options = {
+        timeZone: 'Asia/Seoul',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const formatter = new Intl.DateTimeFormat([], options);
+      const clockEl = document.getElementById('seoulClock');
+      if (clockEl) {
+        clockEl.textContent = formatter.format(new Date());
+      }
+    }
+    setInterval(updateSeoulTime, 1000);
+    updateSeoulTime();
+
+    // Web Speech API
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ko-KR';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  </script>
+</body>
+</html>

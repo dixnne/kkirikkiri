@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사랑인가 봐 💕 - Clase 2: Amor, Amistad & Chisme</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            romance: {
+              bg: '#fdfbf7',
+              pink: '#ffd6e0',
+              pinkDark: '#f72585',
+              lavender: '#f0e6ff',
+              lavenderDark: '#7e22ce',
+              coral: '#f43f5e',
+              border: '#f3e8ff'
+            }
+          },
+          boxShadow: {
+            'soft': '0 12px 32px -4px rgba(244, 63, 94, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body { font-family: "Pretendard", system-ui, sans-serif; background-color: #fdfbf7; }
+    .slide { display: none; opacity: 0; transition: opacity 0.22s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+    
+    .hl-btn {
+      transition: all 0.2s ease;
+      cursor: pointer;
+      display: inline-block;
+      padding: 1px 7px;
+      margin: 1px 0;
+      border-radius: 8px;
+      font-weight: 700;
+      border-width: 1px;
+    }
+    .hl-btn:hover { transform: translateY(-1px) scale(1.02); }
+    
+    .hl-emotion { background-color: #ffe4e6; color: #e11d48; border-color: #fecdd3; }
+    .hl-emotion.selected, .hl-emotion:hover { background-color: #f43f5e; color: #ffffff; border-color: #e11d48; }
+
+    .hl-contraction { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+    .hl-contraction.selected, .hl-contraction:hover { background-color: #0284c7; color: #ffffff; border-color: #0369a1; }
+
+    .hl-complicity { background-color: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
+    .hl-complicity.selected, .hl-complicity:hover { background-color: #9333ea; color: #ffffff; border-color: #7e22ce; }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #fdfbf7; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5d5f2; border-radius: 8px; }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between selection:bg-pink-200 selection:text-pink-900">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="w-full px-4 sm:px-8 py-3.5 border-b border-pink-100 bg-white/90 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="p-2 rounded-2xl bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 transition flex items-center gap-1.5 text-xs font-bold" title="Volver al Hub">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="hidden sm:inline">Hub 끼리끼리</span>
+      </a>
+      <div>
+        <h1 class="text-base font-black text-slate-800 flex items-center gap-2">
+          사랑인가 봐 <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 border border-pink-200">Love, Maybe</span>
+        </h1>
+        <p class="text-xs text-slate-400">K-Romance, Amistad & Chisme</p>
+      </div>
+    </div>
+
+    <!-- Píldoras de Navegación -->
+    <div class="hidden md:flex items-center gap-1 bg-pink-50/80 p-1 rounded-2xl border border-pink-200 text-xs font-bold">
+      <button onclick="goToSlide(0)" class="nav-pill px-3 py-1.5 rounded-xl transition bg-white text-pink-700 shadow-sm">1. Rompehielos</button>
+      <button onclick="goToSlide(1)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-500 hover:text-slate-800">2. Letra Colorida</button>
+      <button onclick="goToSlide(2)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-500 hover:text-slate-800">3. Semáforo</button>
+      <button onclick="goToSlide(3)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-500 hover:text-slate-800">4. Frase Clave</button>
+    </div>
+
+    <span id="slideIndicator" class="text-xs font-mono font-bold bg-pink-50 text-pink-700 px-3 py-1.5 rounded-xl border border-pink-200">
+      1 / 4
+    </span>
+  </header>
+
+  <!-- ================= CONTENEDOR PRINCIPAL ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 flex items-center justify-center relative">
+
+    <!-- ================= SLIDE 1: ROMPEHIELOS ================= -->
+    <section class="slide active flex-col items-center text-center space-y-6 w-full py-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase border border-pink-200">
+        <i data-lucide="heart" class="w-3.5 h-3.5 fill-pink-500 text-pink-500"></i> Rompehielos Relámpago
+      </div>
+
+      <div class="space-y-2 max-w-2xl">
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-800">
+          오늘의 질문: <span class="text-pink-600 underline decoration-pink-300">썸이야, 친구야?</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600">
+          Vota según tu intuición y escucha cómo se pronuncian las reacciones.
+        </p>
+      </div>
+
+      <div class="w-full max-w-2xl bg-white border-2 border-pink-100 rounded-3xl p-6 sm:p-8 shadow-soft text-center space-y-6">
+        <div class="space-y-2">
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">Dilema inicial:</p>
+          <p class="text-2xl sm:text-3xl font-black text-slate-800 leading-snug">
+            "매일 밤 자기 전에 <span class="text-pink-600">‘잘 자’</span>라고 카톡 보내는 친구!"
+          </p>
+          <p class="text-xs text-slate-500 italic">
+            (Un amigo que te manda mensaje de 'Buenas noches' todas las noches antes de dormir)
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <button onclick="speakKorean('그냥 친구야!')" class="p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition flex items-center gap-3">
+            <span class="text-3xl">🧸</span>
+            <div>
+              <p class="font-extrabold text-slate-800 text-base">그냥 친구야!</p>
+              <p class="text-xs text-slate-400">Es solo amistad normal.</p>
+            </div>
+          </button>
+
+          <button onclick="speakKorean('헐, 완전 썸이야!')" class="p-4 rounded-2xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-left transition flex items-center gap-3">
+            <span class="text-3xl">💖</span>
+            <div>
+              <p class="font-extrabold text-pink-700 text-base">헐, 완전 썸이야!</p>
+              <p class="text-xs text-pink-400">¡Coqueteo total! Mariposas.</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="bg-purple-50 p-3.5 rounded-2xl border border-purple-100 flex items-center justify-between text-xs text-purple-900">
+          <div class="flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-purple-600"></i>
+            <span><strong>썸 (Some):</strong> El ligue o coqueteo previo al noviazgo.</span>
+          </div>
+          <button onclick="speakKorean('썸 타다')" class="font-bold text-purple-700 hover:underline">Oír '썸 타다'</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: LETRA CON HIGHLIGHTING COLORIDO ================= -->
+    <section class="slide flex-col items-center space-y-3 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-pink-600 uppercase bg-pink-100 px-3 py-1 rounded-full border border-pink-200">
+          🎵 Love, Maybe (사랑인가 봐)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800">
+          Letra Desglosada por Códigos de Color
+        </h2>
+      </div>
+
+      <!-- Leyenda -->
+      <div class="flex flex-wrap items-center justify-center gap-2 text-xs font-bold">
+        <span class="px-3 py-1 rounded-xl bg-rose-100 text-rose-700 border border-rose-200 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span> 💖 Modismos Emocionales
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-sky-100 text-sky-700 border border-sky-200 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-sky-500"></span> 🔵 Contracciones Banmal
+        </span>
+        <span class="px-3 py-1 rounded-xl bg-purple-100 text-purple-700 border border-purple-200 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-purple-500"></span> 🟣 Complicidad (~잖아)
+        </span>
+      </div>
+
+      <!-- Layout 2 Columnas -->
+      <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
+        <!-- Letra -->
+        <div class="md:col-span-6 bg-white border border-pink-100 rounded-3xl p-5 shadow-soft max-h-[420px] overflow-y-auto custom-scrollbar space-y-3 text-sm leading-relaxed">
+          <div class="space-y-1 text-slate-700">
+            <p>너와 함께 하고 싶은 일들을 <span class="hl-btn hl-contraction" onclick="showBreakdown(0)">상상하는 게</span></p>
+            <p><span class="hl-btn hl-contraction" onclick="showBreakdown(1)">요즘 내 일상이 되고</span></p>
+            <p>너의 즐거워하는 모습을 보고 있으면</p>
+            <p><span class="hl-btn hl-emotion" onclick="showBreakdown(2)">자연스레 따라 웃고 있는 걸</span></p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 space-y-1 text-slate-700">
+            <p>너의 행동에 <span class="hl-btn hl-emotion" onclick="showBreakdown(3)">설레어하고</span>, <span class="hl-btn hl-emotion" onclick="showBreakdown(4)">뒤척이다가</span></p>
+            <p><span class="hl-btn hl-emotion" onclick="showBreakdown(5)">지새운 밤이 많아지는데</span></p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 space-y-1 text-slate-700 bg-pink-50/40 p-3 rounded-2xl border border-pink-100">
+            <p>이건 <span class="hl-btn hl-emotion" onclick="showBreakdown(6)">누가 봐도</span> 사랑일 텐데</p>
+            <p>종일 함께면 질릴 텐데</p>
+            <p>나 돌아서도 <span class="hl-btn hl-contraction" onclick="showBreakdown(7)">온통 너인 건</span></p>
+            <p><span class="hl-btn hl-emotion" onclick="showBreakdown(8)">아무래도 사랑인가 봐</span></p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 space-y-1 text-slate-700">
+            <p>점점 너와 하고 싶은 일들 생각하면서</p>
+            <p>하루를 보낸 날이 많아지는데</p>
+            <p>너의 행복해하는 모습을 보고 있으면</p>
+            <p><span class="hl-btn hl-emotion" onclick="showBreakdown(9)">나도 모르게</span> 따라 웃는데</p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 space-y-1 text-slate-700 bg-purple-50/40 p-3 rounded-2xl border border-purple-100">
+            <p>이 정도면 <span class="hl-btn hl-complicity" onclick="showBreakdown(10)">알아줄 만하잖아</span></p>
+            <p>너도 <span class="hl-btn hl-complicity" onclick="showBreakdown(11)">용기 낼 만하잖아</span></p>
+            <p>나만 <span class="hl-btn hl-contraction" onclick="showBreakdown(12)">이런 게</span> 아니라면</p>
+            <p>우리 <span class="hl-btn hl-complicity" onclick="showBreakdown(13)">만나볼 만하잖아</span></p>
+            <p><span class="hl-btn hl-emotion" onclick="showBreakdown(8)">아무래도 사랑인가 봐</span></p>
+          </div>
+        </div>
+
+        <!-- Ficha de Detalle -->
+        <div class="md:col-span-6 bg-gradient-to-b from-white to-pink-50/40 border border-pink-200 rounded-3xl p-5 sm:p-6 shadow-soft space-y-4">
+          <div class="flex items-center justify-between border-b border-pink-100 pb-3">
+            <span id="detailTag" class="text-xs font-bold px-3 py-1 rounded-full uppercase">💖 Modismo Emocional</span>
+            <button onclick="playDetailAudio()" class="flex items-center gap-1.5 text-xs font-bold text-pink-600 bg-white hover:bg-pink-50 border border-pink-200 px-3.5 py-1.5 rounded-xl shadow-sm transition">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Frase
+            </button>
+          </div>
+
+          <div>
+            <p class="text-xs text-slate-400 font-bold">Expresión seleccionada:</p>
+            <h3 id="detailKorean" class="text-2xl font-black text-slate-800 leading-snug mt-1">설레다 / 설레어하다</h3>
+            <p id="detailTranslation" class="text-sm font-semibold text-rose-600 mt-0.5">"Sentir mariposas / Ilusionarse"</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-slate-100 space-y-2 text-xs">
+            <p id="detailExplanation" class="text-slate-600 leading-relaxed">
+              Expresa el cosquilleo o latido acelerado que sientes por alguien.
+            </p>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 space-y-1">
+              <p class="font-bold text-slate-700 text-[11px] uppercase">💬 En la vida cotidiana / Chisme:</p>
+              <p id="detailUsage" class="font-bold text-slate-800">«너 때문에 설레» / «진짜 설렌다!»</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+            <div class="bg-pink-50 p-3 rounded-xl border border-pink-100">
+              <p class="font-bold text-pink-800 uppercase text-[10px]">En Banmal (Amigos)</p>
+              <p id="detailBanmal" class="font-bold text-slate-800 mt-1">너 때문에 설레</p>
+            </div>
+            <div class="bg-purple-50 p-3 rounded-xl border border-purple-100">
+              <p class="font-bold text-purple-800 uppercase text-[10px]">En Jondaemal (Cortés)</p>
+              <p id="detailJondaemal" class="font-bold text-slate-800 mt-1">당신 때문에 설레요</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: EL SEMÁFORO DEL CHISME ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full border border-purple-200 uppercase">
+          🚦 Chisme Time: Amigos vs. Ligue
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-800">
+          ¿Amistad o Coqueteo? (친구 vs 썸)
+        </h2>
+      </div>
+
+      <div class="w-full max-w-3xl bg-white border-2 border-pink-100 rounded-3xl p-6 shadow-soft space-y-5">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+          <span id="caseNumber" class="text-xs font-mono font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-lg border border-pink-100">CASO 1 / 4</span>
+          <button onclick="nextCase()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+            Siguiente caso <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="text-center py-2 space-y-2">
+          <h3 id="caseKorean" class="text-xl sm:text-2xl font-black text-slate-800 leading-snug">
+            "카페에서 내가 좋아하는 음료를 정확하게 기억하고 미리 사 왔을 때!"
+          </h3>
+          <p id="caseSpanish" class="text-xs sm:text-sm text-slate-500">
+            (Cuando en el café se acuerda exactamente de tu bebida favorita y ya te la tenía comprada)
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <button onclick="voteTraffic('green')" class="p-3.5 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-200 text-center transition">
+            <span class="text-2xl block mb-1">🟢</span>
+            <p class="font-extrabold text-emerald-800 text-xs sm:text-sm">그냥 친구야</p>
+            <p class="text-[10px] text-emerald-600">Solo es amable</p>
+          </button>
+          <button onclick="voteTraffic('yellow')" class="p-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 border-2 border-amber-200 text-center transition">
+            <span class="text-2xl block mb-1">🟡</span>
+            <p class="font-extrabold text-amber-800 text-xs sm:text-sm">애매해 / 썸인가?</p>
+            <p class="text-[10px] text-amber-600">Sospechoso...</p>
+          </button>
+          <button onclick="voteTraffic('red')" class="p-3.5 rounded-2xl bg-pink-50 hover:bg-pink-100 border-2 border-pink-300 text-center transition">
+            <span class="text-2xl block mb-1">🔴</span>
+            <p class="font-extrabold text-pink-700 text-xs sm:text-sm">누가 봐도 썸!</p>
+            <p class="text-[10px] text-pink-500">¡Le gustas 100%!</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Frases en Pantalla -->
+      <div class="w-full max-w-3xl bg-slate-900 text-white rounded-2xl p-4 shadow-lg space-y-2 text-xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-pink-400 block">Frases para debatir:</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <button onclick="speakKorean('야, 그건 그냥 친구야!')" class="p-2.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-left border border-slate-700 transition">
+            <p class="font-bold text-pink-300">«야, 그건 그냥 친구야!»</p>
+            <p class="text-[10px] text-slate-400">"¡Eso es solo de amigos!"</p>
+          </button>
+          <button onclick="speakKorean('헐, 이건 누가 봐도 사랑이야!')" class="p-2.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-left border border-slate-700 transition">
+            <p class="font-bold text-pink-300">«헐, 이건 누가 봐도 사랑이야!»</p>
+            <p class="text-[10px] text-slate-400">"¡Uff, cualquiera ve que es amor!"</p>
+          </button>
+          <button onclick="speakKorean('나 같으면 완전 설렜어!')" class="p-2.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-left border border-slate-700 transition">
+            <p class="font-bold text-pink-300">«나 같으면 완전 설렜어!»</p>
+            <p class="text-[10px] text-slate-400">"¡Yo sentiría mariposas mil!"</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: ESTRIBILLO & CIERRE ================= -->
+    <section class="slide flex-col items-center text-center space-y-6 w-full py-4">
+      <div class="text-4xl animate-bounce">💌</div>
+      <div class="space-y-2 max-w-xl">
+        <span class="text-xs font-bold text-pink-600 bg-pink-100 px-3 py-1 rounded-full uppercase">Frase Clave de Confesión</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-800">우리 만나볼 만하잖아~ 💕</h2>
+        <p class="text-sm text-slate-600">"¿A poco no vale la pena que salgamos juntos en plan cita?"</p>
+      </div>
+
+      <div class="w-full max-w-xl bg-white border border-pink-100 rounded-3xl p-6 shadow-soft space-y-4">
+        <p class="text-xs text-slate-400 uppercase font-bold tracking-widest">Lo que aprendimos hoy:</p>
+        <div class="grid grid-cols-2 gap-3 text-left text-xs">
+          <div class="p-3 bg-pink-50 rounded-xl border border-pink-100">
+            <p class="font-bold text-pink-800">1. 설레다 / 설렘</p>
+            <p class="text-slate-600 text-[11px]">Mariposas e ilusión por alguien.</p>
+          </div>
+          <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+            <p class="font-bold text-purple-800">2. 누가 봐도 ~</p>
+            <p class="text-slate-600 text-[11px]">A todas luces / Es obvio que...</p>
+          </div>
+          <div class="p-3 bg-rose-50 rounded-xl border border-rose-100">
+            <p class="font-bold text-rose-800">3. 아무래도 ~인가 봐</p>
+            <p class="text-slate-600 text-[11px]">Al parecer definitivamente es...</p>
+          </div>
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+            <p class="font-bold text-emerald-800">4. ~잖아</p>
+            <p class="text-slate-600 text-[11px]">"¡Tú sabes que sí! / ¿No crees?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full px-4 sm:px-8 py-3.5 border-t border-pink-100 bg-white/90 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 transition flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+    </button>
+    <span class="text-xs text-slate-400 hidden sm:inline">Navega con flechas ← →</span>
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+      Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const navPills = document.querySelectorAll('.nav-pill');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+      navPills.forEach((p, idx) => {
+        if (idx === currentSlide) {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition bg-white text-pink-700 shadow-sm";
+        } else {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition text-slate-500 hover:text-slate-800";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[«»]/g, '');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'ko-KR';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const breakdownData = [
+      {
+        tag: "🔵 Contracción en Banmal",
+        tagBg: "bg-sky-100 text-sky-800 border border-sky-200",
+        korean: "상상하는 게",
+        translation: "El hecho de imaginar...",
+        explanation: "<strong>하는 게</strong> es la contracción oral de <strong>하는 것이</strong>.",
+        usage: "«너랑 노는 게 제일 재밌어!»",
+        banmal: "상상하는 게 좋아",
+        jondaemal: "상상하는 것이 좋아요"
+      },
+      {
+        tag: "🔵 Vocabulario Cotidiano",
+        tagBg: "bg-sky-100 text-sky-800 border border-sky-200",
+        korean: "일상이 되고",
+        translation: "Volverse mi rutina diaria",
+        explanation: "<strong>일상 (Ilsang):</strong> Día a día / vida cotidiana.",
+        usage: "«너 생각하는 게 내 일상이야»",
+        banmal: "이제 내 일상이야",
+        jondaemal: "이제 제 일상이에요"
+      },
+      {
+        tag: "💖 Modismo & Emoción",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "자연스레 따라 웃고 있는 걸",
+        translation: "Sonriendo contigo de forma natural",
+        explanation: "<strong>자연스레:</strong> Naturalmente. <strong>따라 웃다:</strong> Sonreír con la otra persona.",
+        usage: "«너 웃을 때 나도 따라 웃게 돼»",
+        banmal: "나도 따라 웃어",
+        jondaemal: "저도 따라 웃어요"
+      },
+      {
+        tag: "💖 Modismo Emocional Clave",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "설레다 / 설레어하고",
+        translation: "Sentir mariposas / Ilusionarse",
+        explanation: "Latidos acelerados y mariposas en el estómago.",
+        usage: "«너 때문에 설레» / «진짜 설렌다!»",
+        banmal: "너 때문에 설레",
+        jondaemal: "당신 때문에 설레요"
+      },
+      {
+        tag: "💖 Modismo Emocional",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "뒤척이다 / 뒤척이다가",
+        translation: "Dar vueltas en la cama sin poder dormir",
+        explanation: "Moverse en la cama sin dormir pensando en alguien.",
+        usage: "«어제 너 생각하느라 뒤척였어»",
+        banmal: "밤새 뒤척였어",
+        jondaemal: "밤새 뒤척였어요"
+      },
+      {
+        tag: "💖 Modismo: Noche en vela",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "지새운 밤 / 밤을 지새우다",
+        translation: "Pasar la noche en vela",
+        explanation: "Pasar toda la noche despierto sin pegar un ojo.",
+        usage: "«너랑 카톡하느라 밤 지새웠어»",
+        banmal: "어제 밤 지새웠어",
+        jondaemal: "어제 밤을 지새웠어요"
+      },
+      {
+        tag: "💖 Expresión Popular / Chisme",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "누가 봐도 ~",
+        translation: "A todas luces / Cualquiera lo vería",
+        explanation: "Afirmar que algo es evidente ante cualquiera.",
+        usage: "«누가 봐도 걔 너 좋아해!»",
+        banmal: "누가 봐도 사랑이야",
+        jondaemal: "누가 봐도 사랑인 것 같아요"
+      },
+      {
+        tag: "🔵 Contracción & Enfoque",
+        tagBg: "bg-sky-100 text-sky-800 border border-sky-200",
+        korean: "온통 너인 건",
+        translation: "Que mi mente esté llena solo de ti",
+        explanation: "<strong>온통:</strong> Por completo. <strong>너인 건:</strong> 너인 것은.",
+        usage: "«내 머릿속은 온통 너야»",
+        banmal: "온통 너야",
+        jondaemal: "온통 그 사람이에요"
+      },
+      {
+        tag: "💖 Deducción Emocional",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "아무래도 ~인가 봐",
+        translation: "Al parecer definitivamente es...",
+        explanation: "Reconocer una sospecha que no se puede negar.",
+        usage: "«아무래도 나 걔 좋아하나 봐»",
+        banmal: "아무래도 썸인가 봐!",
+        jondaemal: "아무래도 사랑인 것 같아요"
+      },
+      {
+        tag: "💖 Inconscientemente",
+        tagBg: "bg-rose-100 text-rose-800 border border-rose-200",
+        korean: "나도 모르게",
+        translation: "Sin darme cuenta",
+        explanation: "Hacer algo espontáneo e involuntario.",
+        usage: "«나도 모르게 웃었어»",
+        banmal: "나도 모르게 전화했어",
+        jondaemal: "저도 모르게 연락드렸어요"
+      },
+      {
+        tag: "🟣 Complicidad (~잖아)",
+        tagBg: "bg-purple-100 text-purple-800 border border-purple-200",
+        korean: "알아줄 만하잖아",
+        translation: "Ya es para que te des cuenta, ¿no?",
+        explanation: "Apelar a la complicidad del otro.",
+        usage: "«너도 다 알잖아!»",
+        banmal: "이제 알아줄 만하잖아!",
+        jondaemal: "이제 알아주실 만하잖아요~"
+      },
+      {
+        tag: "🟣 Valentía",
+        tagBg: "bg-purple-100 text-purple-800 border border-purple-200",
+        korean: "너도 용기 낼 만하잖아",
+        translation: "Ya amerita que tengas valor, ¿no?",
+        explanation: "Armarse de valor para dar el paso.",
+        usage: "«너도 용기 낼 만하잖아»",
+        banmal: "빨리 용기 내봐!",
+        jondaemal: "용기 내보세요!"
+      },
+      {
+        tag: "🔵 Contracción Banmal",
+        tagBg: "bg-sky-100 text-sky-800 border border-sky-200",
+        korean: "이런 게",
+        translation: "Cosas como estas",
+        explanation: "Contracción de <strong>이런 것이</strong>.",
+        usage: "«이런 게 사랑이지!»",
+        banmal: "이런 게 좋아",
+        jondaemal: "이런 것이 좋아요"
+      },
+      {
+        tag: "🟣 Confesión (~잖아)",
+        tagBg: "bg-purple-100 text-purple-800 border border-purple-200",
+        korean: "우리 만나볼 만하잖아",
+        translation: "¿A poco no vale la pena salir juntos?",
+        explanation: "Salir juntos en plan cita.",
+        usage: "«우리 만나볼 만하잖아»",
+        banmal: "우리 한번 만나볼래?",
+        jondaemal: "저희 한번 만나보실래요?"
+      }
+    ];
+
+    let currentDetailIndex = 3;
+
+    function showBreakdown(idx) {
+      currentDetailIndex = idx;
+      const d = breakdownData[idx];
+      document.querySelectorAll('.hl-btn').forEach((b, i) => b.classList.toggle('selected', i === idx));
+      document.getElementById('detailTag').textContent = d.tag;
+      document.getElementById('detailKorean').textContent = d.korean;
+      document.getElementById('detailTranslation').textContent = `"${d.translation}"`;
+      document.getElementById('detailExplanation').innerHTML = d.explanation;
+      document.getElementById('detailUsage').textContent = d.usage;
+      document.getElementById('detailBanmal').textContent = d.banmal;
+      document.getElementById('detailJondaemal').textContent = d.jondaemal;
+      speakKorean(d.korean);
+    }
+
+    function playDetailAudio() {
+      speakKorean(breakdownData[currentDetailIndex].korean);
+    }
+
+    const cases = [
+      { kr: "카페에서 내가 좋아하는 음료를 정확하게 기억하고 미리 사 왔을 때!", es: "(Se acuerda exactamente de tu bebida favorita y ya te la tenía comprada)" },
+      { kr: "늦은 밤에 ‘심심하다’면서 별일도 없는데 전화해서 1시간 동안 수다 떨 때!", es: "(Te llama tarde diciendo que está aburrido/a y se quedan 1 hora platicando)" },
+      { kr: "오늘 옷 예쁘게 입었다고 지나가면서 칭찬해 줬을 때!", es: "(Al pasar te dice de la nada que te ves muy bien hoy)" },
+      { kr: "주말에 약속 없다고 하니까 '그럼 나랑 영화 볼래?'라고 바로 물어볼 때!", es: "(Le dices que no tienes planes y te invita al cine directo)" }
+    ];
+
+    let currentCaseIndex = 0;
+    function nextCase() {
+      currentCaseIndex = (currentCaseIndex + 1) % cases.length;
+      document.getElementById('caseNumber').textContent = `CASO ${currentCaseIndex + 1} / ${cases.length}`;
+      document.getElementById('caseKorean').textContent = `"${cases[currentCaseIndex].kr}"`;
+      document.getElementById('caseSpanish').textContent = cases[currentCaseIndex].es;
+      speakKorean(cases[currentCaseIndex].kr);
+    }
+
+    function voteTraffic(color) {
+      if (color === 'green') speakKorean('야, 그건 그냥 친구야!');
+      if (color === 'yellow') speakKorean('애매해, 썸인가?');
+      if (color === 'red') speakKorean('헐, 이건 누가 봐도 사랑이야!');
+    }
+
+    showBreakdown(3);
+  </script>
+</body>
+</html>

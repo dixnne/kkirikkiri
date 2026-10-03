@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘부터 말 놓자! 🎤 - El Pacto de Banmal & Karaoke</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            neon: {
+              bg: '#0b0f19',
+              card: '#131927',
+              border: '#1f2a40',
+              pink: '#ff2a85',
+              cyan: '#00f5d4',
+              purple: '#8b5cf6',
+              yellow: '#fee440'
+            }
+          },
+          keyframes: {
+            disco: {
+              '0%, 100%': { filter: 'hue-rotate(0deg)' },
+              '50%': { filter: 'hue-rotate(180deg)' }
+            }
+          },
+          animation: {
+            disco: 'disco 4s linear infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body { font-family: "Pretendard", system-ui, sans-serif; background-color: #0b0f19; }
+    .slide { display: none; opacity: 0; transition: opacity 0.22s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+    .disco-active {
+      background: radial-gradient(circle, rgba(255, 42, 133, 0.25), rgba(0, 245, 212, 0.25), #0b0f19 80%) !important;
+      animation: disco 3s infinite linear;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #131927; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #273652; border-radius: 8px; }
+  </style>
+</head>
+<body class="bg-neon-bg text-slate-100 min-h-screen flex flex-col justify-between selection:bg-neon-pink selection:text-white">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="w-full px-4 sm:px-8 py-3.5 border-b border-neon-border bg-neon-bg/85 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="p-2 rounded-2xl bg-neon-card hover:bg-neon-border text-slate-300 hover:text-white border border-neon-border transition flex items-center gap-1.5 text-xs font-bold" title="Volver al Hub">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="hidden sm:inline">Hub 끼리끼리</span>
+      </a>
+      <div>
+        <h1 class="text-base font-black text-white flex items-center gap-2">
+          오늘부터 말 놓자! <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-neon-pink/20 text-neon-pink border border-neon-pink/30">Noraebang Arcade</span>
+        </h1>
+        <p class="text-xs text-slate-400">El Pacto de Banmal & Expresiones de Karaoke</p>
+      </div>
+    </div>
+
+    <!-- Slide Navigation Pills -->
+    <div class="hidden md:flex items-center gap-1 bg-neon-card p-1 rounded-2xl border border-neon-border text-xs font-bold">
+      <button onclick="goToSlide(0)" class="nav-pill px-3 py-1.5 rounded-xl transition bg-neon-pink text-white shadow-sm">1. El Escudo</button>
+      <button onclick="goToSlide(1)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-400 hover:text-white">2. Bautizo</button>
+      <button onclick="goToSlide(2)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-400 hover:text-white">3. Frases</button>
+      <button onclick="goToSlide(3)" class="nav-pill px-3 py-1.5 rounded-xl transition text-slate-400 hover:text-white">4. YouTube Room</button>
+    </div>
+
+    <span id="slideIndicator" class="text-xs font-mono font-bold bg-neon-card text-neon-cyan px-3 py-1.5 rounded-xl border border-neon-border">
+      1 / 4
+    </span>
+  </header>
+
+  <!-- ================= MAIN SLIDES CONTAINER ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 flex items-center justify-center relative">
+
+    <!-- ================= SLIDE 1: EL ESCUDO DE BANMAL ================= -->
+    <section class="slide active flex-col items-center space-y-6 w-full py-2">
+      <div class="text-center space-y-2">
+        <span class="px-3.5 py-1 rounded-full bg-neon-pink/15 text-neon-pink text-xs font-extrabold uppercase border border-neon-pink/30 tracking-wider">
+          Zona Cero Formalidades
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-purple-300 to-neon-cyan">
+          오늘부터 말 놓자!
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+          En este club somos amigos de la misma edad. Deja el <strong class="text-red-400">존댓말</strong> afuera y entra al ritmo del <strong class="text-neon-cyan">반말</strong>.
+        </p>
+      </div>
+
+      <!-- Comparativa 존댓말 vs 반말 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+        <!-- Prohibido -->
+        <div class="bg-red-950/25 border-2 border-red-500/30 rounded-3xl p-5 space-y-3">
+          <div class="flex items-center justify-between text-red-400 border-b border-red-500/20 pb-2">
+            <span class="text-xs font-black uppercase flex items-center gap-1.5">
+              <i data-lucide="x-circle" class="w-4 h-4"></i> Prohibido hoy (존댓말)
+            </span>
+            <span class="text-[10px] text-red-400/70">Formal</span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-300 font-medium">
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-red-500/10">
+              <span>안녕하세요?</span>
+              <button onclick="speakKorean('안녕하세요?')" class="p-1 text-slate-400 hover:text-red-400"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-red-500/10">
+              <span>이름이 어떻게 되세요?</span>
+              <button onclick="speakKorean('이름이 어떻게 되세요?')" class="p-1 text-slate-400 hover:text-red-400"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-red-500/10">
+              <span>감사합니다</span>
+              <button onclick="speakKorean('감사합니다')" class="p-1 text-slate-400 hover:text-red-400"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Permitido -->
+        <div class="bg-neon-card border-2 border-neon-cyan/40 rounded-3xl p-5 space-y-3 shadow-lg shadow-neon-cyan/10">
+          <div class="flex items-center justify-between text-neon-cyan border-b border-neon-cyan/20 pb-2">
+            <span class="text-xs font-black uppercase flex items-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i> Permitido hoy (반말)
+            </span>
+            <span class="text-[10px] text-neon-cyan/80">Amistoso</span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-200 font-bold">
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-neon-cyan/20">
+              <span class="text-neon-cyan">안녕! 반가워~</span>
+              <button onclick="speakKorean('안녕! 반가워')" class="p-1 text-slate-400 hover:text-neon-cyan"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-neon-cyan/20">
+              <span class="text-neon-cyan">이름이 뭐야? / 넌 누구야?</span>
+              <button onclick="speakKorean('이름이 뭐야?')" class="p-1 text-slate-400 hover:text-neon-cyan"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+            <li class="flex items-center justify-between bg-neon-bg/70 p-2.5 rounded-xl border border-neon-cyan/20">
+              <span class="text-neon-cyan">고마워! 대박!</span>
+              <button onclick="speakKorean('고마워! 대박!')" class="p-1 text-slate-400 hover:text-neon-cyan"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: BAUTIZO COREANO ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="px-3.5 py-1 rounded-full bg-neon-purple/20 text-purple-300 text-xs font-extrabold uppercase border border-neon-purple/40">
+          ✨ 한국 이름 찾기
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">
+          Elige tu Nombre y Genera tu Frase
+        </h2>
+        <p class="text-xs text-slate-400">
+          La conjugación de <strong>(이)야</strong> se calcula automáticamente según la última letra.
+        </p>
+      </div>
+
+      <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-5">
+        <!-- Catálogo de Nombres -->
+        <div class="md:col-span-7 bg-neon-card border border-neon-border rounded-3xl p-4 space-y-3">
+          <div class="flex justify-between items-center text-xs border-b border-neon-border pb-2">
+            <span class="font-bold text-slate-300">Catálogo de Nombres Nativos:</span>
+            <span class="text-slate-500">Toca para probar</span>
+          </div>
+          <div class="space-y-3 max-h-[270px] overflow-y-auto custom-scrollbar pr-1">
+            <!-- Naturaleza -->
+            <div>
+              <p class="text-[11px] font-bold text-neon-cyan uppercase">🌿 Naturaleza & Cielo</p>
+              <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                <button onclick="pickName('하늘', 'Cielo', true)" class="p-2 bg-neon-bg hover:bg-neon-cyan/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>하늘</span><span class="text-slate-500 text-[10px]">Cielo</span>
+                </button>
+                <button onclick="pickName('바다', 'Mar', false)" class="p-2 bg-neon-bg hover:bg-neon-cyan/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>바다</span><span class="text-slate-500 text-[10px]">Mar</span>
+                </button>
+                <button onclick="pickName('별', 'Estrella', true)" class="p-2 bg-neon-bg hover:bg-neon-cyan/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>별</span><span class="text-slate-500 text-[10px]">Estrella</span>
+                </button>
+                <button onclick="pickName('구름', 'Nube', true)" class="p-2 bg-neon-bg hover:bg-neon-cyan/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>구름</span><span class="text-slate-500 text-[10px]">Nube</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Luz -->
+            <div>
+              <p class="text-[11px] font-bold text-neon-yellow uppercase">☀️ Luz & Calidez</p>
+              <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                <button onclick="pickName('봄', 'Primavera', true)" class="p-2 bg-neon-bg hover:bg-neon-yellow/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>봄</span><span class="text-slate-500 text-[10px]">Primavera</span>
+                </button>
+                <button onclick="pickName('해솔', 'Sol en pinos', true)" class="p-2 bg-neon-bg hover:bg-neon-yellow/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>해솔</span><span class="text-slate-500 text-[10px]">Sol & Pino</span>
+                </button>
+                <button onclick="pickName('누리', 'Mundo entero', false)" class="p-2 bg-neon-bg hover:bg-neon-yellow/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>누리</span><span class="text-slate-500 text-[10px]">Mundo</span>
+                </button>
+                <button onclick="pickName('빛나', 'Brillo resplandeciente', false)" class="p-2 bg-neon-bg hover:bg-neon-yellow/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>빛나</span><span class="text-slate-500 text-[10px]">Brillo</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Alegría -->
+            <div>
+              <p class="text-[11px] font-bold text-neon-pink uppercase">🎈 Alegría & Fuerza</p>
+              <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                <button onclick="pickName('라온', 'Alegría pura', true)" class="p-2 bg-neon-bg hover:bg-neon-pink/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>라온</span><span class="text-slate-500 text-[10px]">Alegría</span>
+                </button>
+                <button onclick="pickName('다온', 'Bendición', true)" class="p-2 bg-neon-bg hover:bg-neon-pink/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>다온</span><span class="text-slate-500 text-[10px]">Todo bueno</span>
+                </button>
+                <button onclick="pickName('우진', 'Universo fuerte', true)" class="p-2 bg-neon-bg hover:bg-neon-pink/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>우진</span><span class="text-slate-500 text-[10px]">Universo</span>
+                </button>
+                <button onclick="pickName('민우', 'Gema brillante', false)" class="p-2 bg-neon-bg hover:bg-neon-pink/15 rounded-xl border border-neon-border text-left flex justify-between font-bold">
+                  <span>민우</span><span class="text-slate-500 text-[10px]">Gema</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credencial Generada -->
+        <div class="md:col-span-5 bg-gradient-to-b from-neon-card to-neon-bg border-2 border-neon-pink/50 rounded-3xl p-5 flex flex-col justify-between space-y-4 shadow-xl">
+          <div class="space-y-1">
+            <span class="text-[10px] font-mono font-bold text-neon-pink uppercase">🪪 Credencial Generada</span>
+            <h3 class="text-base font-black text-white">Tu Presentación en Banmal</h3>
+          </div>
+
+          <div class="bg-neon-bg p-4 rounded-2xl border border-neon-border text-center space-y-2">
+            <p class="text-[11px] text-slate-400">Frase completa:</p>
+            <p id="generatedSentence" class="text-2xl font-black text-neon-pink">
+              안녕! 나는 <span id="currentName" class="underline text-neon-yellow">하늘</span><span id="currentParticle">이야</span>!
+            </p>
+            <p id="currentMeaning" class="text-xs text-slate-300 italic">"¡Hola! ¡Yo soy Cielo!"</p>
+            <button onclick="speakBadge()" class="w-full py-2 bg-neon-pink hover:bg-pink-600 text-white font-extrabold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-md">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Frase
+            </button>
+          </div>
+
+          <!-- Input personalizado -->
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-400">¿Tienes otro nombre?</label>
+            <div class="flex gap-2">
+              <input type="text" id="customInput" placeholder="Ej: Sophia, 지민..." class="flex-1 px-3 py-2 bg-neon-bg border border-neon-border rounded-xl text-xs text-white focus:outline-none focus:border-neon-cyan">
+              <button onclick="applyCustom()" class="px-3.5 py-2 bg-neon-cyan hover:bg-teal-400 text-neon-bg font-extrabold text-xs rounded-xl transition">
+                Aplicar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: FRASES DE KARAOKE ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="px-3.5 py-1 rounded-full bg-neon-cyan/20 text-neon-cyan text-xs font-extrabold uppercase border border-neon-cyan/40">
+          🎤 노래방 필수 표현
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">
+          6 Frases Esenciales de Karaoke
+        </h2>
+        <p class="text-xs text-slate-400">Toca cada tarjeta para escuchar la entonación real en Banmal.</p>
+      </div>
+
+      <div class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-neon-pink transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-neon-pink">#01 Invitar</span>
+            <h3 class="text-lg font-black text-white">야, 노래방 가자!</h3>
+            <p class="text-xs text-slate-400">"¡Oigan, vamos al karaoke!"</p>
+          </div>
+          <button onclick="speakKorean('야, 노래방 가자!')" class="py-2 bg-neon-bg hover:bg-neon-pink text-slate-300 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-neon-purple transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-purple-400">#02 Preguntar</span>
+            <h3 class="text-lg font-black text-white">너 무슨 노래 부를 거야?</h3>
+            <p class="text-xs text-slate-400">"¿Qué canción vas a cantar?"</p>
+          </div>
+          <button onclick="speakKorean('너 무슨 노래 부를 거야?')" class="py-2 bg-neon-bg hover:bg-purple-600 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-neon-cyan transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-neon-cyan">#03 Apartar turno</span>
+            <h3 class="text-lg font-black text-white">첫 곡 내가 부른다!</h3>
+            <p class="text-xs text-slate-400">"¡Yo canto la primera canción!"</p>
+          </div>
+          <button onclick="speakKorean('첫 곡 내가 부른다!')" class="py-2 bg-neon-bg hover:bg-neon-cyan hover:text-neon-bg text-slate-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-neon-yellow transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-neon-yellow">#04 Pasar micro</span>
+            <h3 class="text-lg font-black text-white">마이크 넘겨줘~</h3>
+            <p class="text-xs text-slate-400">"¡Pásame el micrófono!"</p>
+          </div>
+          <button onclick="speakKorean('마이크 넘겨줘~')" class="py-2 bg-neon-bg hover:bg-neon-yellow hover:text-neon-bg text-slate-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-red-400 transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-red-400">#05 Advertencia</span>
+            <h3 class="text-lg font-black text-white">취소 누르지 마!</h3>
+            <p class="text-xs text-slate-400">"¡No le des a cancelar / no quites mi rola!"</p>
+          </div>
+          <button onclick="speakKorean('취소 누르지 마!')" class="py-2 bg-neon-bg hover:bg-red-600 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+
+        <div class="bg-neon-card border border-neon-border p-4 rounded-2xl flex flex-col justify-between space-y-2 hover:border-emerald-400 transition">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-emerald-400">#06 Elogio</span>
+            <h3 class="text-lg font-black text-white">점수 대박이다!</h3>
+            <p class="text-xs text-slate-400">"¡Qué gran puntuación!"</p>
+          </div>
+          <button onclick="speakKorean('점수 대박이다!')" class="py-2 bg-neon-bg hover:bg-emerald-500 text-slate-300 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: SIMULADOR DE YOUTUBE & REACCIONES ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div id="discoContainer" class="w-full max-w-3xl bg-neon-card border-2 border-neon-pink/40 rounded-3xl p-6 sm:p-8 space-y-5 relative transition">
+        <!-- Disco Toggle -->
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-mono font-black text-neon-pink uppercase tracking-widest flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> Simulador Noraebang
+          </span>
+          <button onclick="toggleDisco()" id="discoBtn" class="px-3.5 py-1.5 rounded-full bg-neon-bg border border-neon-border text-xs font-bold text-slate-300 hover:text-white flex items-center gap-1.5 transition">
+            <i data-lucide="disc" class="w-4 h-4 text-neon-pink"></i> Luces Disco
+          </button>
+        </div>
+
+        <div class="text-center space-y-1">
+          <h2 class="text-3xl font-black text-white">신청곡 (Petición de Canción)</h2>
+          <p class="text-xs text-slate-300">Genera la frase en Banmal para ordenar la canción en YouTube.</p>
+        </div>
+
+        <!-- Song Suggestion Pills -->
+        <div class="flex flex-wrap gap-2 justify-center text-xs">
+          <button onclick="suggestSong('BTS - Dynamite')" class="px-3 py-1.5 rounded-xl bg-neon-bg hover:bg-purple-900/40 border border-neon-border text-purple-300 font-bold transition">
+            💜 BTS
+          </button>
+          <button onclick="suggestSong('NewJeans - Hype Boy')" class="px-3 py-1.5 rounded-xl bg-neon-bg hover:bg-teal-900/40 border border-neon-border text-neon-cyan font-bold transition">
+            🐰 NewJeans
+          </button>
+          <button onclick="suggestSong('BLACKPINK - As If It\'s Your Last')" class="px-3 py-1.5 rounded-xl bg-neon-bg hover:bg-pink-900/40 border border-neon-border text-neon-pink font-bold transition">
+            🖤 BLACKPINK
+          </button>
+          <button onclick="suggestSong('DAY6 - 예뻤어')" class="px-3 py-1.5 rounded-xl bg-neon-bg hover:bg-amber-900/40 border border-neon-border text-neon-yellow font-bold transition">
+            🎸 DAY6
+          </button>
+        </div>
+
+        <!-- Input & Sentence -->
+        <div class="space-y-3 pt-1">
+          <div class="flex gap-2">
+            <input type="text" id="songInput" placeholder="Escribe cualquier canción..." class="flex-1 px-4 py-2.5 bg-neon-bg border border-neon-border rounded-xl text-xs text-white focus:outline-none focus:border-neon-pink">
+            <button onclick="applySong()" class="px-4 py-2.5 bg-gradient-to-r from-neon-pink to-neon-purple hover:from-pink-600 hover:to-purple-600 text-white font-black text-xs rounded-xl transition shadow-md">
+              Generar Frase
+            </button>
+          </div>
+
+          <div class="bg-neon-bg p-3.5 rounded-2xl border border-neon-pink/30 text-center space-y-1">
+            <p class="text-[11px] text-slate-400">Frase para pedir tu canción:</p>
+            <p id="songPhraseKr" class="text-lg font-black text-neon-pink">«야, BTS - Dynamite 틀어줘!»</p>
+            <p id="songPhraseEs" class="text-xs text-slate-300 italic">"¡Oigan, pongan BTS - Dynamite!"</p>
+          </div>
+        </div>
+
+        <!-- Soundboard Reactions -->
+        <div class="space-y-2 pt-2 border-t border-neon-border">
+          <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider text-center">Ovaciones del Público (Toca para aplaudir):</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <button onclick="shout('잘한다~!', '¡Qué bien cantas!')" class="p-3 bg-neon-bg hover:bg-indigo-600/20 border border-neon-border rounded-xl text-center transition">
+              <p class="font-black text-indigo-300">잘한다~!</p>
+              <p class="text-[10px] text-slate-400">¡Qué bien!</p>
+            </button>
+            <button onclick="shout('대박!', '¡Qué locura!')" class="p-3 bg-neon-bg hover:bg-pink-600/20 border border-neon-border rounded-xl text-center transition">
+              <p class="font-black text-pink-300">대박!</p>
+              <p class="text-[10px] text-slate-400">¡Increíble!</p>
+            </button>
+            <button onclick="shout('완전 가수네!', '¡Puro artista!')" class="p-3 bg-neon-bg hover:bg-amber-600/20 border border-neon-border rounded-xl text-center transition">
+              <p class="font-black text-neon-yellow">완전 가수네!</p>
+              <p class="text-[10px] text-slate-400">¡Artista!</p>
+            </button>
+            <button onclick="shout('짱이다!', '¡Lo máximo!')" class="p-3 bg-neon-bg hover:bg-emerald-600/20 border border-neon-border rounded-xl text-center transition">
+              <p class="font-black text-emerald-300">짱이다!</p>
+              <p class="text-[10px] text-slate-400">¡Lo máximo!</p>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER CONTROLS ================= -->
+  <footer class="w-full px-4 sm:px-8 py-3.5 border-t border-neon-border bg-neon-bg/90 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-neon-card hover:bg-slate-800 text-slate-300 text-xs font-bold border border-neon-border transition flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+    </button>
+    <span class="text-xs text-slate-500 hidden sm:inline">Navega con flechas ← →</span>
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple hover:from-pink-600 hover:to-purple-600 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+      Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const navPills = document.querySelectorAll('.nav-pill');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+      navPills.forEach((p, idx) => {
+        if (idx === currentSlide) {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition bg-neon-pink text-white shadow-sm";
+        } else {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition text-slate-400 hover:text-white";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Web Speech API
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[«»]/g, '');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'ko-KR';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    // Batchim calculation
+    function hasBatchim(text) {
+      if (!text || text.length === 0) return false;
+      const code = text.charCodeAt(text.length - 1);
+      if (code >= 0xac00 && code <= 0xd7a3) {
+        return (code - 0xac00) % 28 !== 0;
+      }
+      return false;
+    }
+
+    let activeName = "하늘";
+    let activeMeaning = "Cielo";
+
+    function pickName(name, meaning, isConsonant) {
+      activeName = name;
+      activeMeaning = meaning;
+      const particle = isConsonant ? "이야" : "야";
+      document.getElementById('currentName').textContent = name;
+      document.getElementById('currentParticle').textContent = particle;
+      document.getElementById('currentMeaning').textContent = `"¡Hola! ¡Yo soy ${meaning}!"`;
+      speakBadge();
+    }
+
+    function applyCustom() {
+      const val = document.getElementById('customInput').value.trim();
+      if (!val) return;
+      const consonant = hasBatchim(val);
+      pickName(val, val, consonant);
+    }
+
+    function speakBadge() {
+      const particle = hasBatchim(activeName) ? "이야" : "야";
+      speakKorean(`안녕! 나는 ${activeName}${particle}`);
+    }
+
+    // YouTube requests
+    function suggestSong(title) {
+      document.getElementById('songInput').value = title;
+      applySong();
+    }
+
+    function applySong() {
+      const song = document.getElementById('songInput').value.trim() || 'BTS - Dynamite';
+      document.getElementById('songPhraseKr').textContent = `«야, ${song} 틀어줘!»`;
+      document.getElementById('songPhraseEs').textContent = `"¡Oigan, pongan ${song}!"`;
+      speakKorean(`야, ${song} 틀어줘!`);
+    }
+
+    function shout(kr, es) {
+      speakKorean(kr);
+    }
+
+    // Disco mode
+    let isDisco = false;
+    function toggleDisco() {
+      isDisco = !isDisco;
+      const box = document.getElementById('discoContainer');
+      const btn = document.getElementById('discoBtn');
+      if (isDisco) {
+        box.classList.add('disco-active');
+        btn.classList.add('bg-neon-pink', 'text-white');
+      } else {
+        box.classList.remove('disco-active');
+        btn.classList.remove('bg-neon-pink', 'text-white');
+      }
+    }
+  </script>
+</body>
+</html>

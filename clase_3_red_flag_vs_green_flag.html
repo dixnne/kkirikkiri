@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>똥차 가고 벤츠 온다! 🚩 vs 💚 - Tribunal K-Drama</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            noir: {
+              bg: '#faf9f6',
+              card: '#ffffff',
+              border: '#e7e5e4',
+              red: '#e11d48',
+              green: '#16a34a',
+              dark: '#1c1917'
+            }
+          },
+          boxShadow: {
+            'soft': '0 12px 30px -4px rgba(0, 0, 0, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body { font-family: "Pretendard", system-ui, sans-serif; background-color: #faf9f6; }
+    .slide { display: none; opacity: 0; transition: opacity 0.22s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+  </style>
+</head>
+<body class="text-stone-800 min-h-screen flex flex-col justify-between selection:bg-rose-100 selection:text-rose-900">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="w-full px-4 sm:px-8 py-3.5 border-b border-stone-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="p-2 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 transition flex items-center gap-1.5 text-xs font-bold" title="Volver al Hub">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="hidden sm:inline">Hub 끼리끼리</span>
+      </a>
+      <div>
+        <h1 class="text-base font-black text-stone-900 flex items-center gap-2">
+          똥차 가고 벤츠 온다! <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 border border-rose-200">Cinema Trial</span>
+        </h1>
+        <p class="text-xs text-stone-400">Red Flags vs. Green Flags en K-Dramas</p>
+      </div>
+    </div>
+
+    <!-- Píldoras -->
+    <div class="hidden md:flex items-center gap-1 bg-stone-100 p-1 rounded-2xl border border-stone-200 text-xs font-bold">
+      <button onclick="goToSlide(0)" class="nav-pill px-3 py-1.5 rounded-xl transition bg-white text-stone-900 shadow-sm">1. Tribunal</button>
+      <button onclick="goToSlide(1)" class="nav-pill px-3 py-1.5 rounded-xl transition text-stone-500 hover:text-stone-900">2. Audios Nativos</button>
+      <button onclick="goToSlide(2)" class="nav-pill px-3 py-1.5 rounded-xl transition text-stone-500 hover:text-stone-900">3. Soundboard</button>
+      <button onclick="goToSlide(3)" class="nav-pill px-3 py-1.5 rounded-xl transition text-stone-500 hover:text-stone-900">4. Red Flag Propia</button>
+    </div>
+
+    <span id="slideIndicator" class="text-xs font-mono font-bold bg-stone-100 text-stone-700 px-3 py-1.5 rounded-xl border border-stone-200">
+      1 / 4
+    </span>
+  </header>
+
+  <!-- ================= MAIN SLIDES ================= -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 flex items-center justify-center relative">
+
+    <!-- ================= SLIDE 1: EL TRIBUNAL DEL K-DRAMA ================= -->
+    <section class="slide active flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-rose-700 bg-rose-100 px-3 py-1 rounded-full uppercase border border-rose-200">
+          ⚖️ 드라마 과몰입 재판소
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-stone-900">
+          ¿Romántico o Bandera Roja Tóxica?
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-500 max-w-xl mx-auto">
+          Evalúa el cliché del drama, vota y observa el porcentaje de la sala.
+        </p>
+      </div>
+
+      <div class="w-full max-w-3xl bg-white border border-stone-200 rounded-3xl p-5 sm:p-7 shadow-soft space-y-5">
+        <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+          <span id="tropeNumber" class="text-xs font-mono font-black text-rose-700 bg-rose-50 px-3 py-1 rounded-xl border border-rose-200">
+            CASO 1 / 4
+          </span>
+          <button onclick="nextTropeCase()" class="text-xs font-bold text-stone-500 hover:text-stone-800 flex items-center gap-1.5 transition">
+            Siguiente escena <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="text-center py-2 space-y-2">
+          <span id="tropeBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-stone-100 text-stone-600 uppercase">
+            손목 낚아채기 (Agarre de Muñeca)
+          </span>
+          <h3 id="tropeTitleKr" class="text-xl sm:text-2xl font-black text-stone-900 leading-snug">
+            "싸우다가 여주가 뒤돌아서 가려는데, 남주가 화났다고 손목을 팍 낚아챌 때!"
+          </h3>
+          <p id="tropeTitleEs" class="text-xs sm:text-sm text-stone-500">
+            (Pelean, ella se va y él enojado le jalonea la muñeca bruscamente)
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3.5 pt-1">
+          <button onclick="voteTrope('red')" class="p-4 rounded-2xl bg-rose-50 hover:bg-rose-100 border-2 border-rose-300 text-left transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-2xl">🚩</span>
+              <span id="redVoteCount" class="text-xs font-mono font-bold text-rose-700 bg-white px-2 py-0.5 rounded-md border border-rose-200">Votar</span>
+            </div>
+            <div class="pt-2">
+              <p class="font-black text-rose-700 text-sm sm:text-base">완전 레드 플래그!</p>
+              <p class="text-[11px] text-rose-500 font-medium">"¡Eso da miedo y es tóxico!"</p>
+            </div>
+          </button>
+
+          <button onclick="voteTrope('green')" class="p-4 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-300 text-left transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-2xl">💚</span>
+              <span id="greenVoteCount" class="text-xs font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded-md border border-emerald-200">Votar</span>
+            </div>
+            <div class="pt-2">
+              <p class="font-black text-emerald-700 text-sm sm:text-base">로맨틱해! 그린 플래그</p>
+              <p class="text-[11px] text-emerald-600 font-medium">"¡Es pasión de drama, me gusta!"</p>
+            </div>
+          </button>
+        </div>
+
+        <div class="space-y-1.5 pt-1">
+          <div class="flex justify-between text-[11px] font-bold">
+            <span class="text-rose-600">🚩 Red Flag: <strong id="redPercent">50%</strong></span>
+            <span class="text-emerald-600">💚 Green Flag: <strong id="greenPercent">50%</strong></span>
+          </div>
+          <div class="w-full h-3 bg-stone-100 rounded-full overflow-hidden flex border border-stone-200">
+            <div id="redBar" class="bg-rose-500 h-full transition-all duration-300" style="width: 50%;"></div>
+            <div id="greenBar" class="bg-emerald-500 h-full transition-all duration-300" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-3xl bg-stone-900 text-white rounded-2xl p-4 shadow-lg space-y-2 text-xs">
+        <span class="text-[11px] font-bold uppercase text-amber-400 block">Frases de debate en Banmal:</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <button onclick="speakKorean('야, 손목을 왜 잡아? 무서워!')" class="p-2.5 bg-stone-800 hover:bg-stone-700 rounded-xl text-left border border-stone-700 transition">
+            <p class="font-bold text-rose-300">«손목을 왜 잡아? 무서워!»</p>
+            <p class="text-[10px] text-stone-400">"¿Por qué le agarra la muñeca?"</p>
+          </button>
+          <button onclick="speakKorean('진짜 현실이었으면 바로 경찰 불렀어!')" class="p-2.5 bg-stone-800 hover:bg-stone-700 rounded-xl text-left border border-stone-700 transition">
+            <p class="font-bold text-amber-300">«현실이면 바로 경찰 불렀어!»</p>
+            <p class="text-[10px] text-stone-400">"En la vida real llamo a la policía"</p>
+          </button>
+          <button onclick="speakKorean('난 솔직히 드라마니까 설레는데?')" class="p-2.5 bg-stone-800 hover:bg-stone-700 rounded-xl text-left border border-stone-700 transition">
+            <p class="font-bold text-emerald-300">«난 솔직히 설레는데?»</p>
+            <p class="text-[10px] text-stone-400">"A mí sí me dio mariposas"</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: AUDIOS NATIVOS ================= -->
+    <section class="slide flex-col items-center space-y-4 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full uppercase border border-amber-200">
+          🎙️ 보이스 메시지 도착
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-stone-900">
+          Chismes reales de KakaoTalk: 똥차 vs. 벤츠남
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl">
+        <!-- Audio 1 -->
+        <div class="bg-white border-2 border-rose-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 uppercase">Audio 1 • Red Flag</span>
+              <span>😡</span>
+            </div>
+            <h4 class="text-base font-black text-stone-900">«남주 완전 똥차 아니야?»</h4>
+            <div class="bg-rose-50 p-3 rounded-2xl border border-rose-100 text-xs text-stone-700 space-y-1">
+              <p class="font-bold text-rose-950">"야, 너 어제 그 드라마 봤어? 남주 진짜 완전 똥차 아니야? 손목을 왜 낚아채, 무섭게! 완전 레드 플래그야!"</p>
+              <p class="text-[11px] text-stone-500 italic">"El protagonista es basura tóxica, ¿no? ¿Por qué le jalonea la muñeca?"</p>
+            </div>
+            <div class="text-[11px] text-stone-600 bg-stone-50 p-2 rounded-xl border border-stone-200">
+              <p>• <strong>똥차:</strong> Vato tóxico / coche chatarra.</p>
+              <p>• <strong>낚아채다:</strong> Jalonear de golpe.</p>
+            </div>
+          </div>
+          <button onclick="playVoiceNote(1)" class="w-full py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Escuchar Audio 1
+          </button>
+        </div>
+
+        <!-- Audio 2 -->
+        <div class="bg-white border-2 border-amber-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Audio 2 • El Consejo</span>
+              <span>📢</span>
+            </div>
+            <h4 class="text-base font-black text-stone-900">«똥차 가고 벤츠 온다!»</h4>
+            <div class="bg-amber-50 p-3 rounded-2xl border border-amber-100 text-xs text-stone-700 space-y-1">
+              <p class="font-bold text-amber-950">"야! 정신 좀 차려! 걔 완전 똥차야. 더 정들기 전에 당장 손절해. 알잖아, 똥차 가고 벤츠 온다는 말!"</p>
+              <p class="text-[11px] text-stone-500 italic">"¡Reacciona! Ese tipo es un asco. Córtalo ya. ¡Llegará el Mercedes!"</p>
+            </div>
+            <div class="text-[11px] text-stone-600 bg-stone-50 p-2 rounded-xl border border-stone-200">
+              <p>• <strong>정신 차려:</strong> ¡Reacciona! / ¡Despierta!</p>
+              <p>• <strong>손절해:</strong> Cortar relación de tajo.</p>
+            </div>
+          </div>
+          <button onclick="playVoiceNote(2)" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Escuchar Audio 2
+          </button>
+        </div>
+
+        <!-- Audio 3 -->
+        <div class="bg-white border-2 border-emerald-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 uppercase">Audio 3 • Green Flag</span>
+              <span>💚</span>
+            </div>
+            <h4 class="text-base font-black text-stone-900">«저런 사람이 찐 벤츠남이지!»</h4>
+            <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-100 text-xs text-stone-700 space-y-1">
+              <p class="font-bold text-emerald-950">"하... 난 서브남주가 훨씬 낫더라. 비 올 때 우산 챙겨주고, 약 사다 주고... 진짜 완전 다정하잖아. 저런 사람이 찐 벤츠남이지!"</p>
+              <p class="text-[11px] text-stone-500 italic">"A mí me gusta más el secundario. Es atento y dulce. ¡Un partidazo!"</p>
+            </div>
+            <div class="text-[11px] text-stone-600 bg-stone-50 p-2 rounded-xl border border-stone-200">
+              <p>• <strong>다정하다:</strong> Dulce, atento, considerado.</p>
+              <p>• <strong>찐 벤츠남:</strong> Partidazo real (Mercedes).</p>
+            </div>
+          </div>
+          <button onclick="playVoiceNote(3)" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Escuchar Audio 3
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: SOUNDBOARD DE DEBATE ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full uppercase border border-purple-200">
+          🔊 리액션 사운드보드
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-stone-900">
+          Reacciones Rápidas de Debate
+        </h2>
+        <p class="text-xs text-stone-500">Toca para disparar los audios en plena discusión.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+        <button onclick="triggerSoundboard(1)" class="p-5 bg-white border-2 border-stone-200 hover:border-rose-400 rounded-3xl shadow-soft text-left transition space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🥶</span>
+            <span class="text-[10px] font-mono font-bold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">#01 Escalofrios</span>
+          </div>
+          <div>
+            <h4 class="text-lg font-black text-stone-900">«헐... 대박, 진짜 소름 돋았어!»</h4>
+            <p class="text-xs text-stone-400">¡Qué locura, me dio escalofríos!</p>
+          </div>
+        </button>
+
+        <button onclick="triggerSoundboard(2)" class="p-5 bg-white border-2 border-stone-200 hover:border-red-400 rounded-3xl shadow-soft text-left transition space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🤮</span>
+            <span class="text-[10px] font-mono font-bold bg-red-50 text-red-700 px-2.5 py-1 rounded-full border border-red-200">#02 Cero Tolerancia</span>
+          </div>
+          <div>
+            <h4 class="text-lg font-black text-stone-900">«완전 극혐! 난 절대 이해 못 해.»</h4>
+            <p class="text-xs text-stone-400">¡Qué asco total! Jamás lo entendería.</p>
+          </div>
+        </button>
+
+        <button onclick="triggerSoundboard(3)" class="p-5 bg-white border-2 border-stone-200 hover:border-sky-400 rounded-3xl shadow-soft text-left transition space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🥤</span>
+            <span class="text-[10px] font-mono font-bold bg-sky-50 text-sky-700 px-2.5 py-1 rounded-full border border-sky-200">#03 ¡Exacto!</span>
+          </div>
+          <div>
+            <h4 class="text-lg font-black text-stone-900">«내 말이 그 말이야! 완전 사이다다!»</h4>
+            <p class="text-xs text-stone-400">¡Exacto! ¡Qué alivio tan satisfactorio!</p>
+          </div>
+        </button>
+
+        <button onclick="triggerSoundboard(4)" class="p-5 bg-white border-2 border-stone-200 hover:border-amber-400 rounded-3xl shadow-soft text-left transition space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">✋</span>
+            <span class="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full border border-amber-200">#04 Tampoco así</span>
+          </div>
+          <div>
+            <h4 class="text-lg font-black text-stone-900">«에이~ 그건 좀 너무 나갔다!»</h4>
+            <p class="text-xs text-stone-400">¡Ay ajá, ya le estás exagerando!</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: GENERADOR DE RED FLAG PERSONAL ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-rose-700 bg-rose-100 px-3 py-1 rounded-full uppercase border border-rose-200">
+          🚩 나의 레드플래그 말하기
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-stone-900">
+          "¿Qué tipo de persona no toleras tú?"
+        </h2>
+        <p class="text-xs text-stone-500">
+          Estructura: <strong>«나는 [Acción] 하는 사람 진짜 싫어!»</strong>
+        </p>
+      </div>
+
+      <div class="w-full max-w-3xl bg-white border border-stone-200 rounded-3xl p-6 shadow-soft space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold">
+          <button onclick="selectPersonalFlag('연락 안 되는', 'que nunca contesta mensajes')" class="p-3 rounded-2xl bg-stone-50 hover:bg-rose-50 border border-stone-200 text-left transition flex items-center justify-between">
+            <span>📵 연락 안 되는 사람</span>
+            <span class="text-[10px] text-stone-400">No contesta</span>
+          </button>
+          <button onclick="selectPersonalFlag('자기 얘기만 하는', 'que solo habla de sí mismo')" class="p-3 rounded-2xl bg-stone-50 hover:bg-rose-50 border border-stone-200 text-left transition flex items-center justify-between">
+            <span>🗣️ 자기 얘기만 하는 사람</span>
+            <span class="text-[10px] text-stone-400">Egocéntrico</span>
+          </button>
+          <button onclick="selectPersonalFlag('약속 맨날 늦는', 'que siempre llega tarde')" class="p-3 rounded-2xl bg-stone-50 hover:bg-rose-50 border border-stone-200 text-left transition flex items-center justify-between">
+            <span>⏰ 약속 맨날 늦는 사람</span>
+            <span class="text-[10px] text-stone-400">Impuntual</span>
+          </button>
+          <button onclick="selectPersonalFlag('거짓말 자주 하는', 'que miente por todo')" class="p-3 rounded-2xl bg-stone-50 hover:bg-rose-50 border border-stone-200 text-left transition flex items-center justify-between">
+            <span>🤥 거짓말 자주 하는 사람</span>
+            <span class="text-[10px] text-stone-400">Mentiroso</span>
+          </button>
+        </div>
+
+        <div class="bg-rose-50/70 p-5 rounded-2xl border-2 border-rose-200 text-center space-y-2">
+          <p class="text-[11px] font-mono text-rose-700 font-bold uppercase">Tu Frase para decir en voz alta:</p>
+          <h3 id="customFlagSentence" class="text-xl sm:text-2xl font-black text-stone-900">
+            "나는 <span id="flagActionText" class="text-rose-600 underline">연락 안 되는</span> 사람 진짜 싫어!"
+          </h3>
+          <p id="customFlagTranslation" class="text-xs text-stone-500 italic">
+            "A mí de verdad me choca la gente que nunca contesta los mensajes."
+          </p>
+        </div>
+
+        <button onclick="speakPersonalFlag()" class="w-full py-3 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-xs rounded-2xl shadow-sm transition flex items-center justify-center gap-2">
+          <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar y Repetir
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full px-4 sm:px-8 py-3.5 border-t border-stone-200 bg-white/90 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold border border-stone-200 transition flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+    </button>
+    <span class="text-xs text-stone-400 hidden sm:inline">Navega con flechas ← →</span>
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+      Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const navPills = document.querySelectorAll('.nav-pill');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+      navPills.forEach((p, idx) => {
+        if (idx === currentSlide) {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition bg-white text-stone-900 shadow-sm";
+        } else {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition text-stone-500 hover:text-stone-900";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[«»]/g, '');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'ko-KR';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const tropeCases = [
+      { badge: "손목 낚아채기 (Agarre de Muñeca)", kr: "싸우다가 여주가 뒤돌아서 가려는데, 남주가 화났다고 손목을 팍 낚아챌 때!", es: "(Pelean, ella se va y él enojado le jalonea la muñeca bruscamente)", redVotes: 7, greenVotes: 1 },
+      { badge: "재벌남의 강제 쇼핑 (El Chaebol)", kr: "내 취향도 안 묻고 백화점 데려가서 옷이랑 가방을 싹 다 결제해 줄 때!", es: "(Sin preguntarte, te lleva a la tienda departamental y paga todo)", redVotes: 3, greenVotes: 5 },
+      { badge: "다정한 서브남주 (Second Lead)", kr: "비 올 때 말없이 우산 챙겨주고, 아플 때 문 앞에 약 두고 가는 서브남주!", es: "(Lleva paraguas en la lluvia y medicina cuando enfermas)", redVotes: 0, greenVotes: 8 },
+      { badge: "싸우면 잠수타기 (La Ley del Hielo)", kr: "조금만 서운한 일 생기면 며칠 동안 카톡 다 읽씹하고 잠수탈 때!", es: "(Se enoja por algo y te deja en visto por días desapareciendo)", redVotes: 8, greenVotes: 0 }
+    ];
+
+    let currentTropeIndex = 0;
+    let rVotes = tropeCases[0].redVotes;
+    let gVotes = tropeCases[0].greenVotes;
+
+    function updateTropeUI() {
+      const c = tropeCases[currentTropeIndex];
+      document.getElementById('tropeNumber').textContent = `CASO ${currentTropeIndex + 1} / ${tropeCases.length}`;
+      document.getElementById('tropeBadge').textContent = c.badge;
+      document.getElementById('tropeTitleKr').textContent = `"${c.kr}"`;
+      document.getElementById('tropeTitleEs').textContent = c.es;
+
+      const total = rVotes + gVotes;
+      const redP = total === 0 ? 50 : Math.round((rVotes / total) * 100);
+      const greenP = 100 - redP;
+
+      document.getElementById('redPercent').textContent = `${redP}%`;
+      document.getElementById('greenPercent').textContent = `${greenP}%`;
+      document.getElementById('redBar').style.width = `${redP}%`;
+      document.getElementById('greenBar').style.width = `${greenP}%`;
+      document.getElementById('redVoteCount').textContent = `${rVotes} votos`;
+      document.getElementById('greenVoteCount').textContent = `${gVotes} votos`;
+    }
+
+    function nextTropeCase() {
+      currentTropeIndex = (currentTropeIndex + 1) % tropeCases.length;
+      rVotes = tropeCases[currentTropeIndex].redVotes;
+      gVotes = tropeCases[currentTropeIndex].greenVotes;
+      updateTropeUI();
+      speakKorean(tropeCases[currentTropeIndex].kr);
+    }
+
+    function voteTrope(type) {
+      if (type === 'red') {
+        rVotes++;
+        speakKorean('완전 레드 플래그야!');
+      } else {
+        gVotes++;
+        speakKorean('완전 로맨틱한데?');
+      }
+      updateTropeUI();
+    }
+    updateTropeUI();
+
+    const voiceNotes = {
+      1: "야, 너 어제 그 드라마 봤어? 남주 진짜 완전 똥차 아니야? 손목을 왜 낚아채, 무섭게! 완전 레드 플래그야!",
+      2: "야! 정신 좀 차려! 걔 완전 똥차야. 더 정들기 전에 당장 손절해. 알잖아, 똥차 가고 벤츠 온다는 말!",
+      3: "하... 난 서브남주가 훨씬 낫더라. 비 올 때 우산 챙겨주고, 약 사다 주고... 진짜 완전 다정하잖아. 저런 사람이 찐 벤츠남이지!"
+    };
+
+    function playVoiceNote(id) {
+      speakKorean(voiceNotes[id]);
+    }
+
+    const soundboardAudios = {
+      1: "헐... 대박, 진짜 소름 돋았어!",
+      2: "완전 극혐! 난 절대 이해 못 해.",
+      3: "내 말이 그 말이야! 완전 사이다다!",
+      4: "에이~ 그건 좀 너무 나갔다!"
+    };
+
+    function triggerSoundboard(id) {
+      speakKorean(soundboardAudios[id]);
+    }
+
+    let currentAction = "연락 안 되는";
+    function selectPersonalFlag(actKr, actEs) {
+      currentAction = actKr;
+      document.getElementById('flagActionText').textContent = actKr;
+      document.getElementById('customFlagSentence').innerHTML = `"나는 <span class="text-rose-600 underline">${actKr}</span> 사람 진짜 싫어!"`;
+      document.getElementById('customFlagTranslation').textContent = `"A mí de verdad me choca la gente ${actEs}."`;
+      speakPersonalFlag();
+    }
+
+    function speakPersonalFlag() {
+      speakKorean(`나는 ${currentAction} 사람 진짜 싫어!`);
+    }
+  </script>
+</body>
+</html>

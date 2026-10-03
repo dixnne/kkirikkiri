@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교과서 버려! ✨ - Cómo sonar como coreano real</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            urban: {
+              bg: '#fcfbfa',
+              purple: '#8b5cf6',
+              mint: '#059669',
+              coral: '#f43f5e'
+            }
+          },
+          boxShadow: {
+            'soft': '0 10px 30px rgba(0, 0, 0, 0.04)',
+            'pop': '0 8px 24px -4px rgba(139, 92, 246, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body { font-family: "Pretendard", system-ui, sans-serif; background-color: #fcfbfa; }
+    .slide { display: none; opacity: 0; transition: opacity 0.22s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f4f2ee; border-radius: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #dcd7ce; border-radius: 6px; }
+  </style>
+</head>
+<body class="text-zinc-800 min-h-screen flex flex-col justify-between selection:bg-purple-100 selection:text-purple-900">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="w-full px-4 sm:px-8 py-3.5 border-b border-stone-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="p-2 rounded-2xl bg-stone-100 hover:bg-stone-200 text-zinc-700 border border-stone-200 transition flex items-center gap-1.5 text-xs font-bold" title="Volver al Hub">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="hidden sm:inline">Hub 끼리끼리</span>
+      </a>
+      <div>
+        <h1 class="text-base font-black text-zinc-900 flex items-center gap-2">
+          교과서 버려! <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 border border-purple-200">Natural Korean</span>
+        </h1>
+        <p class="text-xs text-zinc-400">Muletillas & Ritmo Nativo</p>
+      </div>
+    </div>
+
+    <!-- Píldoras -->
+    <div class="hidden md:flex items-center gap-1 bg-stone-100 p-1 rounded-2xl border border-stone-200 text-xs font-bold">
+      <button onclick="goToSlide(0)" class="nav-pill px-3 py-1.5 rounded-xl transition bg-white text-zinc-900 shadow-sm">1. Detector Robots</button>
+      <button onclick="goToSlide(1)" class="nav-pill px-3 py-1.5 rounded-xl transition text-zinc-500 hover:text-zinc-900">2. 15 Muletillas</button>
+      <button onclick="goToSlide(2)" class="nav-pill px-3 py-1.5 rounded-xl transition text-zinc-500 hover:text-zinc-900">3. Tuneador</button>
+      <button onclick="goToSlide(3)" class="nav-pill px-3 py-1.5 rounded-xl transition text-zinc-500 hover:text-zinc-900">4. Reto 3 Segundos</button>
+    </div>
+
+    <span id="slideIndicator" class="text-xs font-mono font-bold bg-stone-100 text-zinc-600 px-3 py-1.5 rounded-xl border border-stone-200">
+      1 / 4
+    </span>
+  </header>
+
+  <!-- ================= MAIN SLIDES ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 flex items-center justify-center relative">
+
+    <!-- ================= SLIDE 1: EL DETECTOR DE ROBOTS ================= -->
+    <section class="slide active flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-rose-700 bg-rose-100 px-3 py-1 rounded-full uppercase border border-rose-200">
+          🤖 로봇 탈출 프로젝트
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-zinc-900">
+          ¿Libro de texto acartonado o Coreano Real?
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-500 max-w-xl mx-auto">
+          Toca cada frase para escuchar la diferencia abismal entre Duolingo y hablar con un amigo.
+        </p>
+      </div>
+
+      <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Caso 1 -->
+        <div class="bg-white border border-stone-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono font-bold bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md uppercase">Caso 01 • Estado de ánimo</span>
+            <div class="p-3 bg-red-50 border border-red-100 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-red-600 uppercase">🤖 Modo Libro / Robot:</span>
+              <p class="text-xs font-bold text-zinc-700">"저는 오늘 기분이 매우 좋습니다."</p>
+            </div>
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-emerald-700 uppercase">✨ Modo Coreano Real:</span>
+              <p class="text-sm font-black text-emerald-950">"나 오늘 기분 짱 좋아!"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+            <button onclick="speakKorean('저는 오늘 기분이 매우 좋습니다.')" class="py-2 bg-stone-50 hover:bg-red-50 rounded-xl font-bold text-zinc-600 border border-stone-200 transition">
+              🤖 Oír Robot
+            </button>
+            <button onclick="speakKorean('나 오늘 기분 짱 좋아!')" class="py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold shadow-sm transition">
+              ✨ Oír Nativo
+            </button>
+          </div>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="bg-white border border-stone-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono font-bold bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md uppercase">Caso 02 • ¿Comiste?</span>
+            <div class="p-3 bg-red-50 border border-red-100 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-red-600 uppercase">🤖 Modo Libro / Robot:</span>
+              <p class="text-xs font-bold text-zinc-700">"당신은 식사를 하셨습니까?"</p>
+            </div>
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-emerald-700 uppercase">✨ Modo Coreano Real:</span>
+              <p class="text-sm font-black text-emerald-950">"밥 먹었어? 뭐 먹었어?"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+            <button onclick="speakKorean('당신은 식사를 하셨습니까?')" class="py-2 bg-stone-50 hover:bg-red-50 rounded-xl font-bold text-zinc-600 border border-stone-200 transition">
+              🤖 Oír Robot
+            </button>
+            <button onclick="speakKorean('밥 먹었어? 뭐 먹었어?')" class="py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold shadow-sm transition">
+              ✨ Oír Nativo
+            </button>
+          </div>
+        </div>
+
+        <!-- Caso 3 -->
+        <div class="bg-white border border-stone-200 rounded-3xl p-5 shadow-soft space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="text-[10px] font-mono font-bold bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md uppercase">Caso 03 • Antojo</span>
+            <div class="p-3 bg-red-50 border border-red-100 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-red-600 uppercase">🤖 Modo Libro / Robot:</span>
+              <p class="text-xs font-bold text-zinc-700">"저는 커피를 마시고 싶습니다."</p>
+            </div>
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-0.5">
+              <span class="text-[10px] font-black text-emerald-700 uppercase">✨ Modo Coreano Real:</span>
+              <p class="text-sm font-black text-emerald-950">"아, 커피 완전 땡겨!"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+            <button onclick="speakKorean('저는 커피를 마시고 싶습니다.')" class="py-2 bg-stone-50 hover:bg-red-50 rounded-xl font-bold text-zinc-600 border border-stone-200 transition">
+              🤖 Oír Robot
+            </button>
+            <button onclick="speakKorean('아, 커피 완전 땡겨!')" class="py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold shadow-sm transition">
+              ✨ Oír Nativo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regla de oro -->
+      <div class="w-full max-w-4xl bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 flex items-center justify-between text-xs text-purple-950">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">💡</span>
+          <div>
+            <p class="font-extrabold text-purple-900">La Regla de Oro del Coreano Callejero:</p>
+            <p class="text-purple-700 text-[11px]">En la calle se elimina el 70% de las partículas gramaticales para dar agilidad al ritmo oral.</p>
+          </div>
+        </div>
+        <span class="font-mono font-bold text-purple-700 bg-white px-3 py-1 rounded-xl border border-purple-200 hidden sm:inline">#자연스럽게</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: MATRIZ DE MULETILLAS (15 FICHAS) ================= -->
+    <section class="slide flex-col items-center space-y-4 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-purple-700 bg-purple-100 px-3 py-1 rounded-full uppercase border border-purple-200">
+          🗂️ 추임새 치트키 매트릭스
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-zinc-900">
+          15 Muletillas para Sonar Nativo
+        </h2>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex flex-wrap items-center justify-center gap-1.5 text-xs font-bold">
+        <button onclick="filterMuletillas('all')" class="cat-pill active px-3 py-1 rounded-xl bg-purple-600 text-white shadow-sm transition">Todas (15)</button>
+        <button onclick="filterMuletillas('time')" class="cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition">⏳ Ganar Tiempo</button>
+        <button onclick="filterMuletillas('agree')" class="cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition">🤝 Complicidad</button>
+        <button onclick="filterMuletillas('chisme')" class="cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition">🤫 Chisme</button>
+        <button onclick="filterMuletillas('react')" class="cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition">😲 Reacción</button>
+        <button onclick="filterMuletillas('close')" class="cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition">🏁 Cerrar</button>
+      </div>
+
+      <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+        <!-- Grid Izquierdo -->
+        <div id="muletillaGrid" class="md:col-span-6 bg-white border border-stone-200 rounded-3xl p-4 shadow-soft max-h-[410px] overflow-y-auto custom-scrollbar grid grid-cols-2 gap-2 text-xs">
+        </div>
+
+        <!-- Detalle Derecho -->
+        <div class="md:col-span-6 bg-gradient-to-b from-white to-purple-50/40 border-2 border-purple-200 rounded-3xl p-5 sm:p-6 shadow-pop space-y-4">
+          <div class="flex items-center justify-between border-b border-purple-100 pb-3">
+            <span id="detailCatTag" class="text-xs font-bold px-3 py-1 rounded-full uppercase bg-purple-100 text-purple-800">🤝 Complicidad & Razón</span>
+            <button onclick="playCurrentMuletilla()" class="flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-white hover:bg-purple-50 border border-purple-200 px-3.5 py-1.5 rounded-xl shadow-sm transition">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio
+            </button>
+          </div>
+
+          <div>
+            <span class="text-[11px] text-zinc-400 font-bold uppercase">Muletilla:</span>
+            <h3 id="detailKorean" class="text-3xl font-black text-zinc-900 leading-tight mt-0.5">그니까!</h3>
+            <p id="detailMeaning" class="text-sm font-semibold text-purple-700 mt-1">"¡Tal cual! / ¡Exacto! / ¡Es lo que digo!"</p>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-2xl border border-stone-100 text-xs space-y-1">
+            <p class="font-bold text-zinc-700 text-[11px] uppercase">¿Cuándo usarla?</p>
+            <p id="detailUsageTip" class="text-zinc-600">Para ganar complicidad inmediata cuando estás 100% de acuerdo.</p>
+          </div>
+
+          <div class="bg-stone-900 text-white p-3.5 rounded-2xl space-y-1 text-xs">
+            <p class="text-[10px] text-zinc-400 font-mono font-bold uppercase">Ejemplo en Banmal:</p>
+            <p id="detailExampleKr" class="font-bold text-purple-300 text-sm">— "오늘 진짜 춥다."<br>— "그니까! 얼어 죽을 뻔했어."</p>
+            <p id="detailExampleEs" class="text-[11px] text-zinc-400 italic pt-0.5">— "Hace mucho frío." / — "¡Tal cual! Casi me muero congelada."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: TUNEADOR DE FRASES ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-sky-700 bg-sky-100 px-3 py-1 rounded-full uppercase border border-sky-200">
+          🛠️ 문장 튜닝소 (Pimp My Korean)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-zinc-900">
+          Tuneando una frase aburrida a modo callejero
+        </h2>
+      </div>
+
+      <div class="w-full max-w-3xl bg-white border border-stone-200 rounded-3xl p-5 sm:p-7 shadow-soft space-y-5">
+        <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+          <span id="tuningCaseIndicator" class="text-xs font-mono font-bold text-sky-700 bg-sky-50 px-2.5 py-1 rounded-lg border border-sky-200">CASO 1 / 4</span>
+          <button onclick="nextTuningCase()" class="text-xs font-bold text-zinc-500 hover:text-zinc-800 flex items-center gap-1 transition">
+            Siguiente frase <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="text-center py-1 space-y-1">
+          <span id="tuningContextBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-stone-100 text-zinc-600 uppercase">
+            Situación: Tráfico y llegar tarde
+          </span>
+          <h3 id="tuningScenario" class="text-base sm:text-lg font-bold text-zinc-800">
+            Tu amigo te dice que el metro venía llenísimo y llegó muerto.
+          </h3>
+        </div>
+
+        <div class="space-y-2.5 pt-1 text-xs">
+          <!-- Nivel 1 -->
+          <div class="p-3.5 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-between">
+            <div class="space-y-0.5">
+              <span class="text-[10px] font-bold text-red-600 uppercase">1. Nivel Duolingo / Libro (0% natural)</span>
+              <p id="tuningLevel1" class="font-bold text-zinc-700">"저는 지하철에 사람이 너무 많아서 힘들었습니다."</p>
+            </div>
+            <button onclick="speakTuning(1)" class="p-2 text-zinc-400 hover:text-red-600"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+          </div>
+
+          <!-- Nivel 2 -->
+          <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-between">
+            <div class="space-y-0.5">
+              <span class="text-[10px] font-bold text-amber-700 uppercase">2. Banmal Básico (Se entiende pero seco)</span>
+              <p id="tuningLevel2" class="font-bold text-zinc-800">"지하철 사람 많아서 힘들었어."</p>
+            </div>
+            <button onclick="speakTuning(2)" class="p-2 text-zinc-400 hover:text-amber-700"><i data-lucide="volume-2" class="w-4 h-4"></i></button>
+          </div>
+
+          <!-- Nivel 3 -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 flex items-center justify-between shadow-sm">
+            <div class="space-y-1">
+              <span class="text-[10px] font-black text-purple-700 uppercase">🔥 3. Modo Nativo Tuneado (Muletillas & Slang)</span>
+              <p id="tuningLevel3" class="text-base sm:text-lg font-black text-purple-950">
+                "헐, 그니까! 나 사람 많아서 숨 막혀 죽는 줄!"
+              </p>
+              <p id="tuningExplanation" class="text-[11px] text-zinc-500 italic">
+                Usa 헐, 그니까 y la expresión exagerada 죽는 줄.
+              </p>
+            </div>
+            <button onclick="speakTuning(3)" class="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold shadow-sm flex items-center gap-1.5 transition">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: RETO DE 3 SEGUNDOS ================= -->
+    <section class="slide flex-col items-center space-y-5 w-full py-2">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full uppercase border border-emerald-200">
+          ⚡ 3초 리액션 챌린지
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-zinc-900">
+          ¡Reacciona sin pensar en español!
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-500">
+          Tienes 3 segundos para empezar tu respuesta usando una muletilla sugerida.
+        </p>
+      </div>
+
+      <div class="w-full max-w-2xl bg-white border-2 border-stone-200 rounded-3xl p-6 sm:p-8 shadow-pop text-center space-y-5">
+        <div class="space-y-2">
+          <span class="text-[10px] font-mono font-bold bg-purple-100 text-purple-800 px-3 py-1 rounded-full uppercase">Situación sorpresa</span>
+          <h3 id="challengeTextKr" class="text-2xl sm:text-3xl font-black text-zinc-900 leading-snug">
+            "야, 오늘 저녁에 삼겹살에 소주 콜?"
+          </h3>
+          <p id="challengeTextEs" class="text-xs sm:text-sm text-zinc-500 italic">
+            ("Oye, ¿jalas hoy en la noche a cenar samgyeopsal con soju?")
+          </p>
+        </div>
+
+        <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 text-left space-y-1.5">
+          <p class="text-[11px] font-bold text-zinc-400 uppercase">Empieza respondiendo con:</p>
+          <div class="flex flex-wrap gap-2 pt-1 text-xs">
+            <span id="suggestedMuletilla1" class="px-3 py-1 rounded-xl bg-purple-100 border border-purple-200 text-purple-900 font-extrabold">당연히 콜이지!</span>
+            <span id="suggestedMuletilla2" class="px-3 py-1 rounded-xl bg-amber-100 border border-amber-200 text-amber-900 font-extrabold">솔직히...</span>
+            <span id="suggestedMuletilla3" class="px-3 py-1 rounded-xl bg-rose-100 border border-rose-200 text-rose-900 font-extrabold">아 맞다! 나 약속 있어</span>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+          <button onclick="spinChallenge()" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xs rounded-2xl shadow-sm transition flex items-center justify-center gap-2">
+            <i data-lucide="shuffle" class="w-4 h-4"></i> Girar otra situación
+          </button>
+          <button onclick="speakCurrentChallenge()" class="px-5 py-3 bg-stone-100 hover:bg-stone-200 text-zinc-700 font-bold text-xs rounded-2xl transition flex items-center justify-center gap-2 border border-stone-200">
+            <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar al amigo
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full px-4 sm:px-8 py-3.5 border-t border-stone-200 bg-white/90 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-zinc-700 text-xs font-bold border border-stone-200 transition flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+    </button>
+    <span class="text-xs text-zinc-400 hidden sm:inline">Navega con flechas ← →</span>
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+      Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const navPills = document.querySelectorAll('.nav-pill');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+      navPills.forEach((p, idx) => {
+        if (idx === currentSlide) {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition bg-white text-zinc-900 shadow-sm";
+        } else {
+          p.className = "nav-pill px-3 py-1.5 rounded-xl transition text-zinc-500 hover:text-zinc-900";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[«»]/g, '');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'ko-KR';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const muletillasData = [
+      { id: "m1", cat: "time", catName: "⏳ Ganar Tiempo", kr: "그... / 그거 있잖아", es: "Este... / O sea, ¿sabes qué?", tip: "Cuando la palabra está en la punta de la lengua.", dialogKr: "«그... 그거 있잖아! 그 파란색 카페!»", dialogEs: "«Este... ¡eso que ya sabes! ¡Ese café azul!»" },
+      { id: "m2", cat: "time", catName: "⏳ Ganar Tiempo", kr: "뭐랄까...", es: "¿Cómo decirlo...? / Por así decirlo...", tip: "Para describir una vibra o buscar el término suave.", dialogKr: "«그 사람 분위기가... 뭐랄까, 되게 힙해.»", dialogEs: "«Su vibra es... ¿cómo decirlo?, súper alternativa.»" },
+      { id: "m3", cat: "time", catName: "⏳ Ganar Tiempo", kr: "약간...", es: "Tipo... / Como que... / Medio...", tip: "La favorita de la juventud para suavizar cualquier frase.", dialogKr: "«약간 피곤한데... 그래도 갈래!»", dialogEs: "«Tipo ando algo cansada, pero igual voy!»" },
+      { id: "m4", cat: "agree", catName: "🤝 Complicidad & Razón", kr: "그니까!", es: "¡Tal cual! / ¡Exacto! / ¡Es lo que digo!", tip: "Cuando estás 100% de acuerdo con lo que acaban de decir.", dialogKr: "«— 오늘 진짜 춥다.\n— 그니까! 얼어 죽을 뻔했어.»", dialogEs: "«— Hace un buen de frío.\n— ¡Tal cual! Casi muero congelada.»" },
+      { id: "m5", cat: "agree", catName: "🤝 Complicidad & Razón", kr: "내 말이!", es: "¡Eso mismito digo yo!", tip: "Hermana enérgica de '그니까'.", dialogKr: "«내 말이! 걔 진짜 이상해.»", dialogEs: "«¡Eso digo yo! Ese vato está rarísimo.»" },
+      { id: "m6", cat: "agree", catName: "🤝 Complicidad & Razón", kr: "인정", es: "Te lo compro / Basado / Lo reconozco", tip: "Validar opiniones al instante en slang juvenil.", dialogKr: "«— 이 집 떡볶이가 최고야.\n— 어, 인정.»", dialogEs: "«— El tteokbokki de aquí es el mejor.\n— Sí, te lo compro 100%.»" },
+      { id: "m7", cat: "chisme", catName: "🤫 Chisme & Confesión", kr: "솔직히 (말해서)", es: "La neta... / Sinceramente...", tip: "Para soltar una opinión sincera sin sonar ruda.", dialogKr: "«솔직히 그 드라마 좀 노잼이야.»", dialogEs: "«La verdad ese drama está algo aburrido.»" },
+      { id: "m8", cat: "chisme", catName: "🤫 Chisme & Confesión", kr: "근데 있잖아...", es: "Oye, pero ¿sabes qué...?", tip: "La frase mágica con la que arranca todo chisme.", dialogKr: "«근데 있잖아, 너 어제 걔 스토리 봤어?»", dialogEs: "«Oye, pero fíjate... ¿viste la historia que subió ayer?»" },
+      { id: "m9", cat: "chisme", catName: "🤫 Chisme & Confesión", kr: "어차피...", es: "Total... / De todas formas...", tip: "Tono desenfadado o resignado.", dialogKr: "«어차피 늦었는데 천천히 가자!»", dialogEs: "«Total, ya se nos hizo tarde, vámonos con calma!»" },
+      { id: "m10", cat: "react", catName: "😲 Reacción Relámpago", kr: "헐", es: "¡Uff! / ¡No manches! / ¡Qué locura!", tip: "Sorpresa, queja o impacto instantáneo.", dialogKr: "«헐, 진짜? 대박이다...»", dialogEs: "«¡Uff, ¿en serio?! Qué locura...»" },
+      { id: "m11", cat: "react", catName: "😲 Reacción Relámpago", kr: "에이~", es: "¡Ay ajá! / ¡Tampoco exageres!", tip: "Cuando sospechas que alguien exagera o bromea.", dialogKr: "«에이~ 거짓말하지 마!»", dialogEs: "«¡Ay cómo crees, no me cuentees!»" },
+      { id: "m12", cat: "react", catName: "😲 Reacción Relámpago", kr: "아, 맞다!", es: "¡Ah, sí es cierto! / Casi se me olvida", tip: "Recordar algo de repente.", dialogKr: "«아 맞다! 너한테 줄 거 있어.»", dialogEs: "«¡Ah, sí es cierto! Tengo algo que darte.»" },
+      { id: "m13", cat: "react", catName: "😲 Reacción Relámpago", kr: "어쩐지!", es: "¡Con razón! / ¡Ya decía yo!", tip: "Cuando algo por fin cobra sentido.", dialogKr: "«어쩐지 오늘따라 예쁘더라!»", dialogEs: "«¡Con razón hoy te veías tan arreglada!»" },
+      { id: "m14", cat: "close", catName: "🏁 Cerrar o Cambiar", kr: "암튼 / 아무튼", es: "En fin... / Total... / Como sea...", tip: "Retomar el hilo tras desviarse.", dialogKr: "«암튼, 그래서 걔네 둘이 사귄대!»", dialogEs: "«En fin, ¡el punto es que esos dos ya andan!»" },
+      { id: "m15", cat: "close", catName: "🏁 Cerrar o Cambiar", kr: "암튼 그래~", es: "En fin, así las cosas", tip: "Cierre amigable de una historia sin silencios raros.", dialogKr: "«하하, 암튼 그래~ 너는 어때?»", dialogEs: "«Jaja, en fin, así está el rollo~ ¿y tú qué tal?»" }
+    ];
+
+    let currentMuletilla = muletillasData[3];
+    let currentFilter = 'all';
+
+    function renderMuletillaGrid(filter = 'all') {
+      const grid = document.getElementById('muletillaGrid');
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? muletillasData : muletillasData.filter(m => m.cat === filter);
+      filtered.forEach((m) => {
+        const isSelected = m.id === currentMuletilla.id;
+        const btn = document.createElement('button');
+        btn.className = `p-3 rounded-2xl border text-left transition flex flex-col justify-between ${
+          isSelected ? 'bg-purple-600 text-white border-purple-600 shadow-sm' : 'bg-stone-50 hover:bg-purple-50 text-zinc-800 border-stone-200'
+        }`;
+        btn.innerHTML = `
+          <p class="font-extrabold text-sm ${isSelected ? 'text-white' : 'text-zinc-900'}">${m.kr}</p>
+          <p class="text-[10px] ${isSelected ? 'text-purple-100' : 'text-zinc-400'} pt-0.5 truncate">${m.es}</p>
+        `;
+        btn.onclick = () => selectMuletilla(m);
+        grid.appendChild(btn);
+      });
+    }
+
+    function selectMuletilla(m) {
+      currentMuletilla = m;
+      document.getElementById('detailCatTag').textContent = m.catName;
+      document.getElementById('detailKorean').textContent = m.kr;
+      document.getElementById('detailMeaning').textContent = `"${m.es}"`;
+      document.getElementById('detailUsageTip').textContent = m.tip;
+      document.getElementById('detailExampleKr').innerHTML = m.dialogKr.replace('\n', '<br>');
+      document.getElementById('detailExampleEs').innerHTML = m.dialogEs.replace('\n', '<br>');
+      renderMuletillaGrid(currentFilter);
+      speakKorean(m.kr);
+    }
+
+    function playCurrentMuletilla() {
+      speakKorean(currentMuletilla.kr);
+    }
+
+    function filterMuletillas(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => btn.className = "cat-pill px-3 py-1 rounded-xl bg-stone-100 text-zinc-600 hover:bg-stone-200 transition");
+      event.target.className = "cat-pill active px-3 py-1 rounded-xl bg-purple-600 text-white shadow-sm transition";
+      renderMuletillaGrid(cat);
+    }
+    renderMuletillaGrid();
+
+    const tuningCases = [
+      { badge: "Tráfico y metro lleno", scenario: "Tu amigo te dice que el metro venía a reventar y llegó agotadísimo.", l1: "저는 지하철에 사람이 너무 많아서 힘들었습니다.", l2: "지하철 사람 많아서 힘들었어.", l3: "헐, 그니까! 나 사람 많아서 숨 막혀 죽는 줄!", explanation: "Usa 헐, 그니까 y la hipérbole 죽는 줄 (casi muero)." },
+      { badge: "El chisme del drama", scenario: "Te preguntan si viste el final de temporada del drama de moda.", l1: "저는 어제 그 드라마의 마지막 회를 시청했습니다.", l2: "어제 그 드라마 마지막 편 봤어.", l3: "솔직히... 남주 때문에 끝까지 봤잖아. 완전 벤츠남!", explanation: "Usa 솔직히, ~잖아 y el modismo 벤츠남." },
+      { badge: "No aguantar el picante", scenario: "Te invitan a cenar tteokbokki nivel fuego infernal.", l1: "저는 매운 음식을 잘 먹지 못하기 때문에 사양하겠습니다.", l2: "나 매운 거 못 먹어서 다른 거 먹자.", l3: "에이~ 나 약간 맵찔이라... 딴 거 먹으면 안 돼?", explanation: "Usa 에이, 약간 y la palabra viral 맵찔이." },
+      { badge: "Pedir un café", scenario: "Termina la sesión y todos andan con la pila baja.", l1: "저는 지금 아이스 아메리카노를 마시고 싶습니다.", l2: "나 아이스 아메리카노 마실래.", l3: "아 맞다, 나 아아 완전 땡겨! 같이 갈 사람?", explanation: "Usa 아 맞다, la abreviatura 아아 y el verbo 땡겨." }
+    ];
+
+    let currentTuningIndex = 0;
+    function updateTuningUI() {
+      const c = tuningCases[currentTuningIndex];
+      document.getElementById('tuningCaseIndicator').textContent = `CASO ${currentTuningIndex + 1} / ${tuningCases.length}`;
+      document.getElementById('tuningContextBadge').textContent = c.badge;
+      document.getElementById('tuningScenario').textContent = c.scenario;
+      document.getElementById('tuningLevel1').textContent = `"${c.l1}"`;
+      document.getElementById('tuningLevel2').textContent = `"${c.l2}"`;
+      document.getElementById('tuningLevel3').textContent = `"${c.l3}"`;
+      document.getElementById('tuningExplanation').innerHTML = c.explanation;
+    }
+
+    function nextTuningCase() {
+      currentTuningIndex = (currentTuningIndex + 1) % tuningCases.length;
+      updateTuningUI();
+      speakKorean(tuningCases[currentTuningIndex].l3);
+    }
+
+    function speakTuning(lvl) {
+      const c = tuningCases[currentTuningIndex];
+      if (lvl === 1) speakKorean(c.l1);
+      if (lvl === 2) speakKorean(c.l2);
+      if (lvl === 3) speakKorean(c.l3);
+    }
+    updateTuningUI();
+
+    const challengeCases = [
+      { kr: "야, 오늘 저녁에 삼겹살에 소주 콜?", es: "Oye, ¿jalas hoy a comer panceta con soju?", options: ["당연히 콜이지!", "솔직히 나 다이어트 중인데...", "아 맞다! 나 약속 있어"] },
+      { kr: "너 어제 그 드라마 봤어? 서브남주 진짜 불쌍하지 않아?", es: "¿El chico secundario no da mucha ternura?", options: ["그니까! 완전 벤츠인데 왜 차여?", "내 말이! 여주 진짜 너무해", "솔직히 난 남주가 더 좋던데?"] },
+      { kr: "우리 이번 주말에 한강 가서 라면 먹을래?", es: "¿Vamos al río Han a comer ramyeon?", options: ["헐 대박, 완전 좋아!", "약간 추울 것 같은데 괜찮나?", "어차피 할 일도 없는데 가자!"] },
+      { kr: "야... 나 어제 전남친한테 '자니?'라고 카톡 왔어.", es: "Mi ex me mandó mensaje a las 2 a.m.", options: ["헐, 미쳤다! 바로 차단해", "에이~ 아직도 정신 못 차렸네", "그니까 똥차라는 거야!"] }
+    ];
+
+    let currentChallengeIndex = 0;
+    function spinChallenge() {
+      currentChallengeIndex = (currentChallengeIndex + 1) % challengeCases.length;
+      const c = challengeCases[currentChallengeIndex];
+      document.getElementById('challengeTextKr').textContent = `"${c.kr}"`;
+      document.getElementById('challengeTextEs').textContent = `("${c.es}")`;
+      document.getElementById('suggestedMuletilla1').textContent = c.options[0];
+      document.getElementById('suggestedMuletilla2').textContent = c.options[1];
+      document.getElementById('suggestedMuletilla3').textContent = c.options[2];
+      speakKorean(c.kr);
+    }
+
+    function speakCurrentChallenge() {
+      speakKorean(challengeCases[currentChallengeIndex].kr);
+    }
+  </script>
+</body>
+</html>

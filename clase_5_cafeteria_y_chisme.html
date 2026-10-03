@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카페에서 수다 떨기! ☕ - K-Cafe & Sseol Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            roast: {
+              50: '#fdfbf7',
+              100: '#f7f2ea',
+              200: '#eddccb',
+              300: '#dfc2a6',
+              400: '#c89e77',
+              500: '#b48154',
+              600: '#9b6743',
+              700: '#7e4f35',
+              800: '#5c3927',
+              900: '#382218',
+              950: '#23140e'
+            },
+            latteAccent: '#d97706',
+            matcha: '#059669',
+            berry: '#e11d48'
+          },
+          boxShadow: {
+            'cozy': '0 12px 32px -4px rgba(56, 34, 24, 0.08)',
+            'board': '0 16px 36px -6px rgba(35, 20, 14, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Pretendard Korean Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    body { 
+      font-family: "Pretendard", system-ui, sans-serif; 
+      background-color: #f7f2ea;
+      background-image: radial-gradient(#e5d8c8 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+    .slide { display: none; opacity: 0; transition: opacity 0.22s ease-in-out; }
+    .slide.active { display: flex; opacity: 1; }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1e7da; border-radius: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #ceb79e; border-radius: 8px; }
+  </style>
+</head>
+<body class="text-roast-900 min-h-screen flex flex-col justify-between selection:bg-roast-300 selection:text-roast-950">
+
+  <!-- ================= BARRA SUPERIOR CAFÉ AESTHETIC ================= -->
+  <header class="w-full px-4 sm:px-8 py-3.5 border-b border-roast-200/80 bg-white/90 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="p-2 rounded-2xl bg-roast-100 hover:bg-roast-200 text-roast-800 border border-roast-300 transition flex items-center gap-1.5 text-xs font-bold" title="Volver al Hub">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="hidden sm:inline">Hub 끼리끼리</span>
+      </a>
+      <div>
+        <h1 class="text-base font-black text-roast-950 flex items-center gap-2">
+          카페에서 수다 떨기 <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-roast-100 text-roast-800 border border-roast-300">K-Cafe</span>
+        </h1>
+        <p class="text-xs text-roast-600 font-medium">Menú, Abreviaciones & El Arte del Chisme (썰)</p>
+      </div>
+    </div>
+
+    <!-- Navegación Rápida -->
+    <div class="hidden lg:flex items-center gap-1.5 bg-roast-100/90 p-1.5 rounded-2xl border border-roast-200 text-xs font-bold">
+      <button onclick="goToSlide(0)" class="nav-tab-pill px-3 py-1.5 rounded-xl transition bg-white text-roast-900 shadow-sm">1. 얼죽아 vs 뜨아</button>
+      <button onclick="goToSlide(1)" class="nav-tab-pill px-3 py-1.5 rounded-xl transition text-roast-700 hover:text-roast-950">2. Abreviaciones</button>
+      <button onclick="goToSlide(2)" class="nav-tab-pill px-3 py-1.5 rounded-xl transition text-roast-700 hover:text-roast-950">3. Menú Real</button>
+      <button onclick="goToSlide(3)" class="nav-tab-pill px-3 py-1.5 rounded-xl transition text-roast-700 hover:text-roast-950">4. Chisme (썰)</button>
+      <button onclick="goToSlide(4)" class="nav-tab-pill px-3 py-1.5 rounded-xl transition text-roast-700 hover:text-roast-950">5. 5 Roleplays</button>
+    </div>
+
+    <span id="slideIndicator" class="text-xs font-mono font-black bg-roast-100 text-roast-800 px-3.5 py-1.5 rounded-xl border border-roast-300">
+      1 / 5
+    </span>
+  </header>
+
+  <!-- ================= CONTENEDOR PRINCIPAL ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-3.5 sm:p-6 flex items-center justify-center relative">
+
+    <!-- ================= SLIDE 1: 얼죽아 VS 뜨아 ================= -->
+    <section class="slide active flex-col items-center space-y-4 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-black text-amber-900 bg-amber-100 px-3.5 py-1 rounded-full uppercase border border-amber-300 inline-flex items-center gap-1.5">
+          <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-600"></i> La Religión Coreana del Café
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-roast-950">
+          ¿Team Helado a -10°C o Team Calentito?
+        </h2>
+        <p class="text-xs sm:text-sm text-roast-600 max-w-xl mx-auto">
+          En Corea el café es identidad social. Vota por tu team y escucha la pronunciación.
+        </p>
+      </div>
+
+      <div class="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- 얼죽아 -->
+        <div class="bg-gradient-to-b from-sky-50 to-white border-2 border-sky-200 hover:border-sky-400 rounded-3xl p-5 shadow-cozy space-y-3 flex flex-col justify-between transition">
+          <div class="flex items-center justify-between">
+            <span class="text-4xl">🧊</span>
+            <span id="iceVotesBadge" class="text-xs font-mono font-black text-sky-800 bg-white px-3 py-1 rounded-xl border border-sky-200">0 Votos</span>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-xl font-black text-roast-950">얼죽아 <span class="text-xs font-mono text-sky-600 font-bold">(Eol-juk-ah)</span></h3>
+            <p class="text-xs font-black text-sky-700 bg-sky-100/70 p-2 rounded-xl border border-sky-200">
+              «얼어 죽어도 아이스 아메리카노!»
+            </p>
+            <p class="text-xs text-roast-600 pt-0.5">"¡Aunque me muera congelado, Iced Americano siempre!"</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="speakKorean('얼어 죽어도 아이스 아메리카노!')" class="py-2.5 px-3 bg-white hover:bg-sky-50 border border-sky-300 text-sky-800 text-xs font-extrabold rounded-xl transition flex items-center justify-center gap-1">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+            </button>
+            <button onclick="voteCoffee('ice')" class="py-2.5 px-3 bg-sky-500 hover:bg-sky-600 text-white text-xs font-black rounded-xl transition">
+              +1 Votar
+            </button>
+          </div>
+        </div>
+
+        <!-- 뜨아 -->
+        <div class="bg-gradient-to-b from-amber-50 to-white border-2 border-amber-200 hover:border-amber-400 rounded-3xl p-5 shadow-cozy space-y-3 flex flex-col justify-between transition">
+          <div class="flex items-center justify-between">
+            <span class="text-4xl">♨️</span>
+            <span id="hotVotesBadge" class="text-xs font-mono font-black text-amber-900 bg-white px-3 py-1 rounded-xl border border-amber-200">0 Votos</span>
+          </div>
+          <div class="space-y-1">
+            <h3 class="text-xl font-black text-roast-950">뜨아 <span class="text-xs font-mono text-amber-700 font-bold">(Tteu-ah)</span></h3>
+            <p class="text-xs font-black text-amber-800 bg-amber-100/70 p-2 rounded-xl border border-amber-200">
+              «뜨거운 아메리카노가 최고야!»
+            </p>
+            <p class="text-xs text-roast-600 pt-0.5">"El café caliente reconforta el alma y huele rico."</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="speakKorean('뜨거운 아메리카노가 최고야!')" class="py-2.5 px-3 bg-white hover:bg-amber-50 border border-amber-300 text-amber-900 text-xs font-extrabold rounded-xl transition flex items-center justify-center gap-1">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar
+            </button>
+            <button onclick="voteCoffee('hot')" class="py-2.5 px-3 bg-amber-600 hover:bg-amber-700 text-white text-xs font-black rounded-xl transition">
+              +1 Votar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- K-Hack -->
+      <div class="w-full max-w-3xl bg-white border-2 border-roast-300 rounded-3xl p-4 sm:p-5 shadow-cozy flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-roast-100 flex items-center justify-center text-2xl flex-shrink-0 border border-roast-200">
+            📱
+          </div>
+          <div>
+            <p class="font-black text-roast-950 text-sm sm:text-base flex items-center gap-2">
+              K-Culture Hack: «자리 먼저 맡아!» 
+              <span class="text-[10px] font-bold bg-matcha/15 text-matcha px-2 py-0.5 rounded-full border border-matcha/30">Cero robos</span>
+            </p>
+            <p class="text-xs text-roast-600">En Corea dejas tu celular o laptop en la mesa para apartar lugar y nadie lo toca.</p>
+          </div>
+        </div>
+        <button onclick="speakKorean('야, 내 폰 두고 갈 테니까 자리 먼저 맡아!')" class="w-full sm:w-auto px-4 py-2.5 bg-roast-800 hover:bg-roast-900 text-white text-xs font-extrabold rounded-xl transition flex-shrink-0 flex items-center justify-center gap-1.5">
+          <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar frase
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: DECODIFICADOR DE ABREVIACIONES ================= -->
+    <section class="slide flex-col items-center space-y-4 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-black text-amber-900 bg-amber-100 px-3.5 py-1 rounded-full uppercase border border-amber-300">
+          🔍 줄임말 해독소 (Decodificador de Slang)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-roast-950">
+          ¿Cómo se inventan las abreviaciones callejeras?
+        </h2>
+        <p class="text-xs text-roast-600">Se toma la primera sílaba de cada palabra para ordenar a toda velocidad.</p>
+      </div>
+
+      <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-3.5 max-h-[440px] overflow-y-auto custom-scrollbar p-1">
+        <!-- 아아 -->
+        <div class="bg-white border-2 border-roast-200 rounded-3xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold bg-roast-100 text-roast-800 px-2.5 py-0.5 rounded-lg border border-roast-200">#01 El Rey de Corea</span>
+            <button onclick="speakKorean('아아 한 잔 주세요')" class="text-xs font-bold text-roast-600 hover:text-roast-900 flex items-center gap-1"><i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Oír</button>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <h3 class="text-2xl font-black text-roast-950">아아</h3>
+            <span class="text-xs font-mono font-bold text-roast-500">(Ah-Ah)</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-roast-50 border border-roast-200 text-xs space-y-1">
+            <p class="font-bold text-roast-900"><span class="text-latteAccent font-black underline">아</span>이스 + <span class="text-latteAccent font-black underline">아</span>메리카노</p>
+            <p class="text-[11px] text-roast-600 italic">"Iced Americano. Con solo decir '아아 주세요' te entienden al instante."</p>
+          </div>
+        </div>
+
+        <!-- 아바라 -->
+        <div class="bg-white border-2 border-roast-200 rounded-3xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-lg border border-amber-200">#02 El Dulce</span>
+            <button onclick="speakKorean('아바라 한 잔 테이크아웃이요')" class="text-xs font-bold text-roast-600 hover:text-roast-900 flex items-center gap-1"><i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Oír</button>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <h3 class="text-2xl font-black text-roast-950">아바라</h3>
+            <span class="text-xs font-mono font-bold text-roast-500">(Ah-Ba-Ra)</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs space-y-1">
+            <p class="font-bold text-roast-900"><span class="text-amber-700 font-black underline">아</span>이스 + <span class="text-amber-700 font-black underline">바</span>닐라 + <span class="text-amber-700 font-black underline">라</span>떼</p>
+            <p class="text-[11px] text-roast-600 italic">"Iced Vanilla Latte. Si hace frío y lo quieres caliente se dice 뜨바라."</p>
+          </div>
+        </div>
+
+        <!-- 자허블 -->
+        <div class="bg-white border-2 border-roast-200 rounded-3xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-lg border border-rose-200">#03 Fenómeno Viral</span>
+            <button onclick="speakKorean('자허블 아이스로 주세요')" class="text-xs font-bold text-roast-600 hover:text-roast-900 flex items-center gap-1"><i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Oír</button>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <h3 class="text-2xl font-black text-roast-950">자허블</h3>
+            <span class="text-xs font-mono font-bold text-roast-500">(Ja-Heo-Beul)</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-rose-50/70 border border-rose-200 text-xs space-y-1">
+            <p class="font-bold text-roast-900"><span class="text-rose-600 font-black underline">자</span>몽 + <span class="text-rose-600 font-black underline">허</span>니 + <span class="text-rose-600 font-black underline">블</span>랙티</p>
+            <p class="text-[11px] text-roast-600 italic">"Té negro con toronja y miel, el clásico sin café más vendido."</p>
+          </div>
+        </div>
+
+        <!-- 크로플 -->
+        <div class="bg-white border-2 border-roast-200 rounded-3xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-lg border border-emerald-200">#04 Postre Viral</span>
+            <button onclick="speakKorean('크로플에 아이스크림 추가해 주세요')" class="text-xs font-bold text-roast-600 hover:text-roast-900 flex items-center gap-1"><i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Oír</button>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <h3 class="text-2xl font-black text-roast-950">크로플</h3>
+            <span class="text-xs font-mono font-bold text-roast-500">(Croffle)</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs space-y-1">
+            <p class="font-bold text-roast-900"><span class="text-emerald-700 font-black underline">크로</span>와상 + 와<span class="text-emerald-700 font-black underline">플</span></p>
+            <p class="text-[11px] text-roast-600 italic">"Croissant prensado en wafflera con bola de helado arriba."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: MENÚ REAL DE CAFETERÍA ================= -->
+    <section class="slide flex-col items-center space-y-3.5 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-black text-amber-900 bg-amber-100 px-3.5 py-1 rounded-full uppercase border border-amber-300">
+          📋 메뉴판 (Pizarra de Seúl)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-roast-950">
+          Pide tu café exactamente como te gusta
+        </h2>
+      </div>
+
+      <div class="w-full max-w-5xl bg-white border-2 border-roast-300 rounded-3xl p-5 shadow-board space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
+          <!-- Coffee -->
+          <div class="bg-roast-50 p-3.5 rounded-2xl border border-roast-200 space-y-2">
+            <div class="flex items-center justify-between border-b border-roast-200 pb-1.5 font-black text-roast-900">
+              <span>☕ COFFEE (커피)</span>
+              <span class="text-[10px] text-roast-500">HOT / ICE</span>
+            </div>
+            <div class="space-y-1.5">
+              <div onclick="speakKorean('아메리카노')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>아메리카노</strong> <span class="text-[10px] text-roast-500">(Americano)</span></div>
+                <span class="font-mono font-bold">4.5</span>
+              </div>
+              <div onclick="speakKorean('카페라떼')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>카페 라떼</strong> <span class="text-[10px] text-roast-500">(Latte)</span></div>
+                <span class="font-mono font-bold">5.0</span>
+              </div>
+              <div onclick="speakKorean('바닐라 라떼')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>바닐라 라떼</strong> <span class="text-[10px] text-roast-500">(Vanilla)</span></div>
+                <span class="font-mono font-bold">5.5</span>
+              </div>
+              <div onclick="speakKorean('아인슈페너')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>아인슈페너</strong> <span class="text-[10px] text-roast-500">(Einspänner)</span></div>
+                <span class="font-mono font-bold">6.0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Non-Coffee -->
+          <div class="bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200 space-y-2">
+            <div class="flex items-center justify-between border-b border-amber-200 pb-1.5 font-black text-amber-950">
+              <span>🧋 NON-COFFEE (논커피)</span>
+              <span class="text-[10px] text-amber-700">Sweet</span>
+            </div>
+            <div class="space-y-1.5">
+              <div onclick="speakKorean('말차 라떼')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>말차 라떼</strong> <span class="text-[10px] text-amber-700">(Matcha)</span></div>
+                <span class="font-mono font-bold">5.5</span>
+              </div>
+              <div onclick="speakKorean('초코 라떼')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>초코 라떼</strong> <span class="text-[10px] text-amber-700">(Choco)</span></div>
+                <span class="font-mono font-bold">5.0</span>
+              </div>
+              <div onclick="speakKorean('자몽 허니 블랙티')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>자몽 허니 블랙티</strong> <span class="text-[10px] text-amber-700">(자허블)</span></div>
+                <span class="font-mono font-bold">5.8</span>
+              </div>
+              <div onclick="speakKorean('생딸기 라떼')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>생딸기 라떼</strong> <span class="text-[10px] text-amber-700">(Fresa)</span></div>
+                <span class="font-mono font-bold">6.2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dessert -->
+          <div class="bg-emerald-50/50 p-3.5 rounded-2xl border border-emerald-200 space-y-2">
+            <div class="flex items-center justify-between border-b border-emerald-200 pb-1.5 font-black text-emerald-950">
+              <span>🧇 DESSERT (디저트 배)</span>
+              <span class="text-[10px] text-emerald-700">Must Try</span>
+            </div>
+            <div class="space-y-1.5">
+              <div onclick="speakKorean('소금빵')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>소금빵</strong> <span class="text-[10px] text-emerald-700">(Pan de sal)</span></div>
+                <span class="font-mono font-bold">3.5</span>
+              </div>
+              <div onclick="speakKorean('플레인 크로플')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>플레인 크로플</strong> <span class="text-[10px] text-emerald-700">(Croffle)</span></div>
+                <span class="font-mono font-bold">4.5</span>
+              </div>
+              <div onclick="speakKorean('아이스크림 크로플')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>아이스크림 크로플</strong> <span class="text-[10px] text-emerald-700">(Con helado)</span></div>
+                <span class="font-mono font-bold">6.0</span>
+              </div>
+              <div onclick="speakKorean('바스크 치즈케이크')" class="flex justify-between items-center cursor-pointer hover:bg-white p-1 rounded-lg transition">
+                <div><strong>바스크 치즈케이크</strong> <span class="text-[10px] text-emerald-700">(Cheesecake)</span></div>
+                <span class="font-mono font-bold">6.5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Comandos para el Barista -->
+        <div class="bg-roast-900 text-white p-4 rounded-2xl space-y-2 text-xs">
+          <span class="font-bold text-amber-300 block">Frases para personalizar tu orden con el barista:</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button onclick="speakKorean('디카페인으로 변경해 주세요')" class="p-2.5 bg-roast-800 hover:bg-roast-700 rounded-xl text-left border border-roast-700 transition">
+              <p class="font-bold text-amber-200">«디카페인 변경»</p>
+              <p class="text-[10px] text-roast-300">Descafeinado</p>
+            </button>
+            <button onclick="speakKorean('샷 추가해 주세요')" class="p-2.5 bg-roast-800 hover:bg-roast-700 rounded-xl text-left border border-roast-700 transition">
+              <p class="font-bold text-amber-200">«샷 추가해 주세요»</p>
+              <p class="text-[10px] text-roast-300">Shot extra</p>
+            </button>
+            <button onclick="speakKorean('덜 달게 해주세요')" class="p-2.5 bg-roast-800 hover:bg-roast-700 rounded-xl text-left border border-roast-700 transition">
+              <p class="font-bold text-amber-200">«덜 달게 해주세요»</p>
+              <p class="text-[10px] text-roast-300">Menos dulce</p>
+            </button>
+            <button onclick="speakKorean('먹고 갈게요')" class="p-2.5 bg-roast-800 hover:bg-roast-700 rounded-xl text-left border border-roast-700 transition">
+              <p class="font-bold text-amber-200">«먹고 / 마시고 갈게요»</p>
+              <p class="text-[10px] text-roast-300">Para tomar aquí</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: EL ARTE DEL CHISME (자, 썰 풀어봐!) ================= -->
+    <section class="slide flex-col items-center space-y-4 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-black text-rose-800 bg-rose-100 px-3.5 py-1 rounded-full uppercase border border-rose-300">
+          🤫 본격 수다 타임 (Let's Gossip)
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-roast-950">
+          «자, 썰 풀어봐!» (¡Suelta la sopa!)
+        </h2>
+        <p class="text-xs text-roast-600"><strong>썰 (Sseol)</strong> es jerga para anécdota, historia o chisme jugoso.</p>
+      </div>
+
+      <div class="w-full max-w-3xl bg-white border-2 border-roast-300 rounded-3xl p-5 sm:p-6 shadow-cozy space-y-4">
+        <div class="flex justify-between items-center border-b border-roast-100 pb-2.5">
+          <span id="gossipCaseIndicator" class="text-xs font-mono font-black text-amber-900 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">
+            CHISME 1 / 4
+          </span>
+          <button onclick="nextGossip()" class="text-xs font-bold text-roast-600 hover:text-roast-950 flex items-center gap-1 transition">
+            Girar otro chisme <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <div class="text-center py-2 space-y-1 bg-roast-50/70 p-4 rounded-2xl border border-roast-200">
+          <span id="gossipCategory" class="text-[10px] font-bold px-3 py-0.5 rounded-full bg-rose-100 text-rose-800 uppercase">
+            Situación: Encuentro con el Ex
+          </span>
+          <h3 id="gossipTextKr" class="text-lg sm:text-2xl font-black text-roast-950 leading-snug">
+            "야, 나 어제 홍대 카페에서 전남친 봤잖아..."
+          </h3>
+          <p id="gossipTextEs" class="text-xs text-roast-600 italic">
+            ("Oye, no sabes... ¡ayer vi a mi ex en un café de Hongdae...!")
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs">
+          <button onclick="speakKorean('헐 진짜? 누구랑 있었는데?!')" class="p-3 rounded-2xl bg-white hover:bg-rose-50 border border-roast-200 text-left transition space-y-0.5 shadow-sm">
+            <span class="text-[10px] font-bold text-rose-600 uppercase block">1. Pregunta con morbo:</span>
+            <p class="font-extrabold text-roast-900 text-sm">«누구랑 있었는데?!»</p>
+            <p class="text-[10px] text-roast-500">"¡¿Con quién estaba?!"</p>
+          </button>
+          <button onclick="speakKorean('그래서 눈 마주쳤어?!')" class="p-3 rounded-2xl bg-white hover:bg-amber-50 border border-roast-200 text-left transition space-y-0.5 shadow-sm">
+            <span class="text-[10px] font-bold text-amber-700 uppercase block">2. Tensión máxima:</span>
+            <p class="font-extrabold text-roast-900 text-sm">«그래서 눈 마주쳤어?!»</p>
+            <p class="text-[10px] text-roast-500">"¿Y cruzaron miradas?"</p>
+          </button>
+          <button onclick="speakKorean('대박... 소름 돋는다!')" class="p-3 rounded-2xl bg-white hover:bg-sky-50 border border-roast-200 text-left transition space-y-0.5 shadow-sm">
+            <span class="text-[10px] font-bold text-sky-700 uppercase block">3. Reacción en shock:</span>
+            <p class="font-extrabold text-roast-900 text-sm">«대박... 소름 돋아!»</p>
+            <p class="text-[10px] text-roast-500">"¡Qué miedo!"</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: CARRUSEL DE ROLEPLAY (5 ESCENARIOS) ================= -->
+    <section class="slide flex-col items-center space-y-3.5 w-full py-1">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-black text-matcha bg-emerald-100 px-3.5 py-1 rounded-full uppercase border border-emerald-300">
+          🎭 롤플레잉 미니 드라마
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-roast-950">
+          5 Diálogos Cotidianos en Banmal
+        </h2>
+      </div>
+
+      <!-- Píldoras del Carrusel -->
+      <div class="w-full max-w-4xl flex items-center justify-between gap-1 overflow-x-auto custom-scrollbar pb-1">
+        <button onclick="selectRoleplay(0)" id="roleplayTab0" class="roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-roast-900 text-white shadow-sm border border-roast-900">
+          1. ¡Yo invito!
+        </button>
+        <button onclick="selectRoleplay(1)" id="roleplayTab1" class="roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-white text-roast-700 hover:bg-roast-100 border border-roast-200">
+          2. Apartar Mesa
+        </button>
+        <button onclick="selectRoleplay(2)" id="roleplayTab2" class="roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-white text-roast-700 hover:bg-roast-100 border border-roast-200">
+          3. Menos Dulce
+        </button>
+        <button onclick="selectRoleplay(3)" id="roleplayTab3" class="roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-white text-roast-700 hover:bg-roast-100 border border-roast-200">
+          4. Postre Viral
+        </button>
+        <button onclick="selectRoleplay(4)" id="roleplayTab4" class="roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-white text-roast-700 hover:bg-roast-100 border border-roast-200">
+          5. Soltar el Chisme
+        </button>
+      </div>
+
+      <!-- Tarjeta Central de Diálogo -->
+      <div class="w-full max-w-4xl bg-white border-2 border-roast-300 rounded-3xl p-5 sm:p-6 shadow-cozy space-y-4">
+        <div class="flex items-center justify-between border-b border-roast-100 pb-2.5">
+          <div class="flex items-center gap-2">
+            <span id="roleplayBadgeIcon" class="text-xl">💳</span>
+            <div>
+              <h3 id="roleplayTitle" class="text-sm font-black text-roast-950">
+                Situación 1: "¿Qué vas a tomar? ¡Hoy yo disparo!"
+              </h3>
+              <p id="roleplaySubtitle" class="text-[11px] text-roast-500 font-medium">Decidir qué pedir frente a la barra</p>
+            </div>
+          </div>
+          <span id="roleplayCounter" class="text-xs font-mono font-black text-roast-600 bg-roast-100 px-2.5 py-1 rounded-xl">
+            1 / 5
+          </span>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Amigo A -->
+          <div class="p-3.5 bg-roast-50 rounded-2xl border border-roast-200 flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <span class="text-[10px] font-black text-roast-600 uppercase flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-roast-300 text-roast-950 flex items-center justify-center font-bold text-[9px]">A</span> Amigo A:
+              </span>
+              <p id="dialogLineAKr" class="font-black text-roast-950 text-sm sm:text-base">«너 뭐 마실래? 오늘 내가 쏠게!»</p>
+              <p id="dialogLineAEs" class="text-xs text-roast-600 italic">"¿Qué quieres tomar? ¡Hoy yo disparo/invito!"</p>
+            </div>
+            <button onclick="playCurrentRoleplay('A')" class="p-2 text-roast-500 hover:text-roast-900 bg-white rounded-xl border border-roast-200 shadow-sm transition flex-shrink-0">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Amigo B -->
+          <div class="p-3.5 bg-amber-50/70 rounded-2xl border border-amber-200 flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <span class="text-[10px] font-black text-amber-800 uppercase flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-amber-300 text-amber-950 flex items-center justify-center font-bold text-[9px]">B</span> Amigo B:
+              </span>
+              <p id="dialogLineBKr" class="font-black text-roast-950 text-sm sm:text-base">«진짜? 대박! 그럼 난 시원한 아아 마실래!»</p>
+              <p id="dialogLineBEs" class="text-xs text-amber-900/80 italic">"¿En serio? ¡Qué genial! ¡Yo quiero un Iced Americano bien frío!"</p>
+            </div>
+            <button onclick="playCurrentRoleplay('B')" class="p-2 text-amber-700 hover:text-amber-950 bg-white rounded-xl border border-amber-300 shadow-sm transition flex-shrink-0">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-roast-100/80 p-3 rounded-2xl flex flex-wrap items-center justify-between gap-2 text-xs">
+          <span class="font-extrabold text-roast-700 flex items-center gap-1">
+            <i data-lucide="key" class="w-3.5 h-3.5 text-amber-700"></i> Expresión clave:
+          </span>
+          <span id="roleplayKeyWord" class="font-black text-roast-950 bg-white px-3 py-1 rounded-xl border border-roast-300 shadow-sm">
+            내가 쏠게! = ¡Yo invito / Yo pago la cuenta!
+          </span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="w-full px-4 sm:px-8 py-3.5 border-t border-roast-200/90 bg-white/90 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30">
+    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-roast-100 hover:bg-roast-200 text-roast-800 text-xs font-bold border border-roast-300 transition flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+    </button>
+    <span class="text-xs text-roast-500 hidden sm:inline">Navega con flechas ← →</span>
+    <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-roast-700 to-roast-900 hover:from-roast-800 hover:to-roast-950 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5">
+      Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const navPills = document.querySelectorAll('.nav-tab-pill');
+
+    function updateSlide() {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+      navPills.forEach((p, idx) => {
+        if (idx === currentSlide) {
+          p.className = "nav-tab-pill px-3 py-1.5 rounded-xl transition bg-white text-roast-900 shadow-sm";
+        } else {
+          p.className = "nav-tab-pill px-3 py-1.5 rounded-xl transition text-roast-700 hover:text-roast-950";
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    function speakKorean(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/[«»]/g, '');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'ko-KR';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    let iceVotes = 0;
+    let hotVotes = 0;
+    function voteCoffee(type) {
+      if (type === 'ice') {
+        iceVotes++;
+        document.getElementById('iceVotesBadge').textContent = `${iceVotes} Votos`;
+        speakKorean('얼어 죽어도 아이스 아메리카노!');
+      } else {
+        hotVotes++;
+        document.getElementById('hotVotesBadge').textContent = `${hotVotes} Votos`;
+        speakKorean('뜨거운 아메리카노가 최고야!');
+      }
+    }
+
+    const gossipCases = [
+      { cat: "Situación: Encuentro con el Ex", kr: "야, 나 어제 홍대 카페에서 전남친 봤잖아...", es: "Oye, no sabes... ¡ayer vi a mi ex en un café de Hongdae...!" },
+      { cat: "Situación: Mensaje en la madrugada", kr: "그 사람 어제 새벽 2시에 '자니?'라고 카톡 왔어...", es: "Ese vato me mandó mensaje a las 2 a.m. preguntando si estaba despierta..." },
+      { cat: "Situación: El drama de la universidad", kr: "솔직히 우리 교수님 성격 완전 빌런이야!", es: "¡La neta la personalidad de mi profesor es de villano!" },
+      { cat: "Situación: La cita perfecta (Green Flag)", kr: "어제 걔가 내 집 앞까지 데려다주고 가방도 들어줬잖아!", es: "¡Ayer me acompañó hasta mi casa y me cargó la bolsa todo el camino!" }
+    ];
+
+    let currentGossipIndex = 0;
+    function nextGossip() {
+      currentGossipIndex = (currentGossipIndex + 1) % gossipCases.length;
+      const g = gossipCases[currentGossipIndex];
+      document.getElementById('gossipCaseIndicator').textContent = `CHISME ${currentGossipIndex + 1} / ${gossipCases.length}`;
+      document.getElementById('gossipCategory').textContent = g.cat;
+      document.getElementById('gossipTextKr').textContent = `"${g.kr}"`;
+      document.getElementById('gossipTextEs').textContent = `("${g.es}")`;
+      speakKorean(g.kr);
+    }
+
+    const roleplayScenarios = [
+      {
+        icon: "💳",
+        title: "Situación 1: \"¿Qué vas a tomar? ¡Hoy yo disparo!\"",
+        sub: "Decidir rápido qué pedir frente al mostrador",
+        aKr: "«너 뭐 마실래? 오늘 내가 쏠게!»",
+        aEs: "\"¿Qué quieres tomar? ¡Hoy yo disparo/invito!\"",
+        bKr: "«진짜? 대박! 그럼 난 시원한 아아 마실래!»",
+        bEs: "\"¿En serio? ¡Qué genial! ¡Entonces yo quiero un Iced Americano bien frío!\"",
+        key: "내가 쏠게! = ¡Yo invito / Yo pago la cuenta!"
+      },
+      {
+        icon: "📱",
+        title: "Situación 2: \"¡Aparta mesa primero con tu celular!\"",
+        sub: "Buscar lugar en un café lleno en Seúl antes de pedir",
+        aKr: "«야, 사람 진짜 많다! 2층 가서 자리 먼저 맡아!»",
+        aEs: "\"¡Oye, hay muchísima gente! ¡Sube al segundo piso y aparta mesa primero!\"",
+        bKr: "«알겠어! 내 폰 테이블에 올려둘게. 주문하고 와!»",
+        bEs: "\"¡Vale! Dejo mi celular en la mesa. ¡Ve a ordenar y vienes!\"",
+        key: "자리 맡다 = Apartar lugar / mesa"
+      },
+      {
+        icon: "🍯",
+        title: "Situación 3: \"Pídemelo menos dulce, porfa\"",
+        sub: "Modificar los ingredientes de la bebida",
+        aKr: "«나 아바라 마실 건데, 덜 달게 해달라고 해줘!»",
+        aEs: "\"Yo quiero un Iced Vanilla Latte, ¡pero dile que lo preparen menos dulce!\"",
+        bKr: "«오케이! 시럽 반만 넣어달라고 말할게.»",
+        bEs: "\"¡Listo! Les diré que le pongan solo la mitad de jarabe.\"",
+        key: "덜 달게 해주세요 = Menos dulce, por favor"
+      },
+      {
+        icon: "🧇",
+        title: "Situación 4: \"¡El estómago del postre va aparte!\"",
+        sub: "La tentación inevitable de pedir un Croffle",
+        aKr: "«배 터질 것 같은데... 크로플 하나 시킬까?»",
+        aEs: "\"Siento que voy a explotar de comida pero... ¿pedimos un croffle?\"",
+        bKr: "«당연하지! 디저트 배는 따로 있잖아~ 아이스크림 추가 콜?»",
+        bEs: "\"¡Obvio sí! El estómago del postre es aparte~ ¿Jalas con helado extra?\"",
+        key: "디저트 배는 따로 있어 = Siempre hay hueco para el postre"
+      },
+      {
+        icon: "🤫",
+        title: "Situación 5: \"¡Llegó el café, ahora sí suelta la sopa!\"",
+        sub: "Sentarse en la mesa para empezar el chisme",
+        aKr: "«커피 나왔다! 자, 이제 아까 말하려던 썰 좀 풀어봐!»",
+        aEs: "\"¡Ya llegó el café! Ahora sí... ¡suelta la sopa del chisme que traías!\"",
+        bKr: "«후... 너 놀라지 마라? 솔직히 나 어제 걔한테 연락 왔어.»",
+        bEs: "\"Uff... ¿no te vas a espantar? La neta ayer esa persona me mandó mensaje.\"",
+        key: "자, 썰 풀어봐! = ¡A ver, cuenta el chisme ya!"
+      }
+    ];
+
+    let currentRoleplayIndex = 0;
+    function selectRoleplay(idx) {
+      currentRoleplayIndex = idx;
+      const r = roleplayScenarios[idx];
+      document.querySelectorAll('.roleplay-pill').forEach((b, i) => {
+        b.className = i === idx 
+          ? "roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-roast-900 text-white shadow-sm border border-roast-900"
+          : "roleplay-pill flex-1 py-2 px-2.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-white text-roast-700 hover:bg-roast-100 border border-roast-200";
+      });
+      document.getElementById('roleplayBadgeIcon').textContent = r.icon;
+      document.getElementById('roleplayTitle').textContent = r.title;
+      document.getElementById('roleplaySubtitle').textContent = r.sub;
+      document.getElementById('roleplayCounter').textContent = `${idx + 1} / ${roleplayScenarios.length}`;
+      document.getElementById('dialogLineAKr').textContent = r.aKr;
+      document.getElementById('dialogLineAEs').textContent = r.aEs;
+      document.getElementById('dialogLineBKr').textContent = r.bKr;
+      document.getElementById('dialogLineBEs').textContent = r.bEs;
+      document.getElementById('roleplayKeyWord').textContent = r.key;
+    }
+
+    function playCurrentRoleplay(spk) {
+      const r = roleplayScenarios[currentRoleplayIndex];
+      speakKorean(spk === 'A' ? r.aKr : r.bKr);
+    }
+  </script>
+</body>
+</html>
